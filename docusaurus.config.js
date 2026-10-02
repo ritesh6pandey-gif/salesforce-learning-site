@@ -107,6 +107,7 @@ const config = {
             position: 'left',
             label: 'Salesforce Integration',
           },
+          {to: '/materials', label: 'Course Materials', position: 'left'},
         ],
       },
       footer: {
@@ -118,6 +119,10 @@ const config = {
               {
                 label: 'Salesforce Integration',
                 to: '/docs/salesforce-integration/integration-patterns',
+              },
+              {
+                label: 'Course Materials',
+                to: '/materials',
               },
             ],
           },

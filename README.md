@@ -39,7 +39,10 @@ src/components/TopicIcon/         the per-topic icon set (icons.js) + circular B
 src/data/quizzes/                  one JSON file per topic's quiz questions
 src/data/courseTopics.js           ordered list of lessons — used by progress tracking
 src/utils/progressStore.js         localStorage read/write for lesson completion
-static/downloads/                  put PDFs/PPTs here; linked from lesson pages
+src/pages/materials.js             the "Course Materials" page (navbar: Course Materials)
+src/components/LessonDownloads/    the download box shown on a lesson if material exists
+scripts/generate-materials-manifest.mjs   scans static/downloads/, runs before start/build
+static/downloads/                  put PDFs/PPTs here, named after the lesson's slug
 ```
 
 ## How to add a new lesson to an existing course
@@ -89,18 +92,41 @@ static/downloads/                  put PDFs/PPTs here; linked from lesson pages
    lesson show up in the course progress checklist and the homepage progress count.
 7. Save — the dev server (`npm start`) picks it up automatically.
 
-## How to add a downloadable PDF/PPT to a lesson
+## How to add course material (PDF/PPT uploads)
 
-1. Copy the file into `static/downloads/`, e.g. `static/downloads/my-slides.pdf`.
-2. In the lesson's `.md` file, add a link:
-   ```md
-   [Download the slides (PDF)](/downloads/my-slides.pdf)
-   ```
-3. If you're linking a `.ppt`/`.pptx` and a PDF version also exists, say so explicitly,
-   e.g.:
-   ```md
-   [Download the slides (PPT)](/downloads/my-slides.pptx) — a PDF version is also available.
-   ```
+There's a visible **Course Materials** page (linked in the navbar and footer, at
+`/materials`) listing every lesson and whether material has been uploaded for it. Each
+lesson page also shows a "Download the slides" box automatically once material exists
+for it — you don't write any download links by hand.
+
+**The only rule: name the file after the lesson's URL slug.**
+
+1. Find the slug for the lesson you want (it's the file name in
+   `docs/salesforce-integration/`, e.g. `integration-patterns.md` → slug
+   `integration-patterns`; the full list is also in `src/data/courseTopics.js`).
+2. Upload a file to `static/downloads/` named exactly `<slug>.pdf` and/or
+   `<slug>.pptx` (or `.ppt`). You can upload both — the materials page and the
+   lesson page will then show both a PDF and a PPT download link automatically.
+3. That's it — no other file needs editing. A small script
+   (`scripts/generate-materials-manifest.mjs`) scans `static/downloads/` and wires
+   everything up automatically, every time the site starts or builds.
+
+**To upload without using a terminal at all**, do it straight from GitHub's web UI:
+
+1. Go to the repo's `static/downloads/` folder on github.com.
+2. Click **Add file → Upload files**, drag your PDF/PPT in (named per step 2 above),
+   and commit directly to `main`.
+3. The file is now in the repo — see "Publishing a change" below for how it gets onto
+   the live site.
+
+> **Current limitation:** the live site is deployed with a manual command (see
+> Deployment below), not auto-deployed on every GitHub push yet. So after uploading on
+> github.com, the fastest way to get it live today is to ask Claude to pull the latest
+> commit and redeploy (a one-line request, takes under a minute). Wiring up true
+> auto-deploy-on-push needs a one-time connection between this Cloudflare Pages project
+> and the GitHub repo, done from the Cloudflare dashboard (it requires your own GitHub
+> authorization, so it isn't something that can be scripted end-to-end) — ask if you
+> want to set that up.
 
 ## How to add quiz questions
 
@@ -201,33 +227,49 @@ Version 1 only wires up "Salesforce Integration," but the site is built to grow:
 
 ## Deployment
 
-This site is deployed as a static build (`npm run build` produces a `build/` folder),
-so it works on any static host. These are the steps for **Cloudflare Pages** (free
-tier, no credit card required):
+**Live site:** https://salesforce-learning-hub.pages.dev — hosted on **Cloudflare
+Pages** (free tier, no credit card).
 
-1. **Build locally first to confirm it's clean:**
-   ```bash
-   npm run build
-   ```
-2. **Install the Cloudflare CLI (one-time):**
-   ```bash
-   npm install -g wrangler
-   ```
-3. **Log in to Cloudflare** (opens a browser to authenticate — you'll need a free
-   Cloudflare account):
-   ```bash
-   wrangler login
-   ```
-4. **Deploy the build folder:**
-   ```bash
-   wrangler pages deploy build --project-name=salesforce-learning-hub
-   ```
-   Wrangler will print a live `*.pages.dev` URL when it finishes.
-5. **Future updates:** re-run `npm run build` then the same `wrangler pages deploy`
-   command — it creates a new deployment each time.
+This site deploys as a static build (`npm run build` produces a `build/` folder), so
+it works on any static host. It's currently deployed via direct upload (Wrangler CLI),
+**not** auto-deployed from GitHub — pushing to `main` does not update the live site by
+itself. See "Publishing a change" below for the actual update flow, and the note at
+the end of this section if you want to change that.
+
+### Publishing a change (what actually updates the live site today)
+
+```bash
+npm run build
+npx wrangler pages deploy build --project-name=salesforce-learning-hub
+```
+
+That's it — no login needed after the first time (Wrangler remembers it). This is
+what to run (or ask Claude to run) any time docs, materials, or code change and you
+want the live site updated.
+
+### First-time setup (already done for this project)
+
+1. `npx wrangler login` — opens a browser to authorize Wrangler with your free
+   Cloudflare account. No terminal command ever sees your password.
+2. `npx wrangler pages project create salesforce-learning-hub --production-branch=main --force`
+   — creates the Pages project. (`--force` is only needed this one time, to use
+   classic Direct Upload Pages instead of Wrangler's newer Workers-based flow, which
+   hits an npm peer-dependency conflict with this project's search plugin.)
+3. `npx wrangler pages deploy build --project-name=salesforce-learning-hub` — the
+   first real deploy (same command as "Publishing a change" above).
 
 > This repo does not deploy anything on its own. Nothing above runs until you (or
 > Claude, with your explicit go-ahead at that time) executes it.
+
+### Going further: auto-deploy whenever you push to GitHub
+
+Right now, uploading a file or editing a doc on github.com does **not** make it live
+by itself — someone still has to run the "Publishing a change" command above. To make
+every push to `main` deploy automatically, the Cloudflare Pages project needs to be
+connected to the GitHub repo. That's a one-time step done in the Cloudflare dashboard
+(Workers & Pages → salesforce-learning-hub → Settings → Build & deployments → connect
+to Git) and requires *your* GitHub authorization — it's not something that can be
+scripted end-to-end on your behalf. Ask if you'd like help walking through it.
 
 ### If you'd rather use GitHub Pages or Netlify instead
 

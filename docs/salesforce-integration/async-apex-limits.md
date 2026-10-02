@@ -7,6 +7,7 @@ description: Future methods, Queueable, Batch Apex, Scheduled Apex, and the gove
 import Quiz from '@site/src/components/Quiz';
 import LessonComplete from '@site/src/components/LessonComplete';
 import TopicIconBadge from '@site/src/components/TopicIcon/Badge';
+import LessonDownloads from '@site/src/components/LessonDownloads';
 
 <TopicIconBadge id="async-apex-limits" />
 
@@ -97,6 +98,8 @@ System.enqueueJob(new SyncOrderJob(order.Id));
 
 [Asynchronous Apex](https://trailhead.salesforce.com/content/learn/modules/asynchronous_apex)
 covers future methods, Batch Apex, Queueable Apex, and Scheduled Apex with examples.
+
+<LessonDownloads topicId="async-apex-limits" />
 
 ## Quiz
 

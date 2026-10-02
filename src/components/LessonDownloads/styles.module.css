@@ -1,0 +1,28 @@
+.box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.9rem;
+  margin: 1.5rem 0;
+  padding: 0.85rem 1.1rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 10px;
+  background: var(--ifm-background-surface-color);
+}
+
+.label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+}
+
+.link {
+  font-weight: 600;
+  font-size: 0.9rem;
+}

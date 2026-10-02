@@ -7,6 +7,7 @@ description: The core patterns for connecting Salesforce to other systems, and h
 import Quiz from '@site/src/components/Quiz';
 import LessonComplete from '@site/src/components/LessonComplete';
 import TopicIconBadge from '@site/src/components/TopicIcon/Badge';
+import LessonDownloads from '@site/src/components/LessonDownloads';
 import CourseProgress from '@site/src/components/CourseProgress';
 
 <TopicIconBadge id="integration-patterns" />
@@ -85,6 +86,8 @@ This lesson gives you the vocabulary; Trailhead's trail goes deeper into real-wo
 architecture trade-offs:
 
 [Explore Integration Patterns and Practices](https://trailhead.salesforce.com/content/learn/trails/explore-integration-patterns-and-practices)
+
+<LessonDownloads topicId="integration-patterns" />
 
 ## Quiz
 

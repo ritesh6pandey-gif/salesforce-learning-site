@@ -7,6 +7,7 @@ description: A map of Salesforce's main APIs (REST, SOAP, Bulk, Streaming/Pub-Su
 import Quiz from '@site/src/components/Quiz';
 import LessonComplete from '@site/src/components/LessonComplete';
 import TopicIconBadge from '@site/src/components/TopicIcon/Badge';
+import LessonDownloads from '@site/src/components/LessonDownloads';
 
 <TopicIconBadge id="salesforce-apis" />
 
@@ -97,6 +98,8 @@ This trades immediacy for throughput and resilience against timeouts.
 
 [Platform API Basics](https://trailhead.salesforce.com/content/learn/modules/api_basics)
 covers REST, SOAP, Bulk 2.0, and the Pub/Sub API with guided practice.
+
+<LessonDownloads topicId="salesforce-apis" />
 
 ## Quiz
 

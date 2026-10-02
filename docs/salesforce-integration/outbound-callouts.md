@@ -7,6 +7,7 @@ description: Calling external systems from Apex with HttpRequest/HttpResponse, a
 import Quiz from '@site/src/components/Quiz';
 import LessonComplete from '@site/src/components/LessonComplete';
 import TopicIconBadge from '@site/src/components/TopicIcon/Badge';
+import LessonDownloads from '@site/src/components/LessonDownloads';
 
 <TopicIconBadge id="outbound-callouts" />
 
@@ -110,6 +111,8 @@ try {
 
 [Apex Integration Services](https://trailhead.salesforce.com/content/learn/modules/apex_integration_services)
 covers Apex REST and SOAP callouts in more depth, with hands-on practice.
+
+<LessonDownloads topicId="outbound-callouts" />
 
 ## Quiz
 

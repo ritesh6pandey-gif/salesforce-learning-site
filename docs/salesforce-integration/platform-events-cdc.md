@@ -7,6 +7,7 @@ description: Event-driven integration with custom Platform Events and standard-o
 import Quiz from '@site/src/components/Quiz';
 import LessonComplete from '@site/src/components/LessonComplete';
 import TopicIconBadge from '@site/src/components/TopicIcon/Badge';
+import LessonDownloads from '@site/src/components/LessonDownloads';
 
 <TopicIconBadge id="platform-events-cdc" />
 
@@ -87,6 +88,8 @@ flowchart LR
 
 - [Platform Events Basics](https://trailhead.salesforce.com/content/learn/modules/platform_events_basics)
 - [Change Data Capture Basics](https://trailhead.salesforce.com/content/learn/modules/change-data-capture)
+
+<LessonDownloads topicId="platform-events-cdc" />
 
 ## Quiz
 

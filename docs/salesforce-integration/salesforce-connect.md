@@ -7,6 +7,7 @@ description: Accessing live external data as virtual records (external objects) 
 import Quiz from '@site/src/components/Quiz';
 import LessonComplete from '@site/src/components/LessonComplete';
 import TopicIconBadge from '@site/src/components/TopicIcon/Badge';
+import LessonDownloads from '@site/src/components/LessonDownloads';
 
 <TopicIconBadge id="salesforce-connect" />
 
@@ -77,6 +78,8 @@ native Salesforce objects where automation and reporting need it.
 
 [Quick Start: Salesforce Connect](https://trailhead.salesforce.com/content/learn/projects/quickstart-lightning-connect)
 is a hands-on project that walks through setting up external objects.
+
+<LessonDownloads topicId="salesforce-connect" />
 
 ## Quiz
 

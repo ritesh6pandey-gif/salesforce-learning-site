@@ -7,6 +7,7 @@ description: Keeping integration endpoints and secrets safe, and how to tell whe
 import Quiz from '@site/src/components/Quiz';
 import LessonComplete from '@site/src/components/LessonComplete';
 import TopicIconBadge from '@site/src/components/TopicIcon/Badge';
+import LessonDownloads from '@site/src/components/LessonDownloads';
 
 <TopicIconBadge id="security-monitoring" />
 
@@ -83,6 +84,8 @@ Practical tools for this, roughly in order of how much setup they need:
 [Real-Time Event Monitoring](https://trailhead.salesforce.com/content/learn/modules/realtime-event-monitoring)
 covers org-level visibility into events, logins, and API usage (features vary by
 edition and add-on licensing).
+
+<LessonDownloads topicId="security-monitoring" />
 
 ## Quiz
 

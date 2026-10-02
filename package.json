@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
+    "materials:manifest": "node scripts/generate-materials-manifest.mjs",
+    "prestart": "npm run materials:manifest",
     "start": "docusaurus start",
+    "prebuild": "npm run materials:manifest",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",

@@ -7,6 +7,7 @@ description: Calling and exposing APIs without Apex, using Flow HTTP Callout act
 import Quiz from '@site/src/components/Quiz';
 import LessonComplete from '@site/src/components/LessonComplete';
 import TopicIconBadge from '@site/src/components/TopicIcon/Badge';
+import LessonDownloads from '@site/src/components/LessonDownloads';
 
 <TopicIconBadge id="declarative-options" />
 
@@ -74,6 +75,8 @@ an invocable Apex action exposed so admins can still orchestrate it from Flow.
 
 [External Services](https://trailhead.salesforce.com/content/learn/modules/external-services)
 walks through registering an API spec and using the resulting actions in Flow.
+
+<LessonDownloads topicId="declarative-options" />
 
 ## Quiz
 

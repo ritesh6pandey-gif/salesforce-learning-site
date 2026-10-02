@@ -7,6 +7,7 @@ description: How Salesforce authenticates outbound callouts and inbound API call
 import Quiz from '@site/src/components/Quiz';
 import LessonComplete from '@site/src/components/LessonComplete';
 import TopicIconBadge from '@site/src/components/TopicIcon/Badge';
+import LessonDownloads from '@site/src/components/LessonDownloads';
 
 <TopicIconBadge id="authentication" />
 
@@ -85,6 +86,8 @@ existing security model that decides *what* they can do.
 
 [Protect Secrets Using Platform Features](https://trailhead.salesforce.com/content/learn/modules/secure-secrets-storage/protect-secrets-using-platform-features)
 covers Named Credentials and secret storage in more depth.
+
+<LessonDownloads topicId="authentication" />
 
 ## Quiz
 

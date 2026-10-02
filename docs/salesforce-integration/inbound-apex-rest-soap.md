@@ -7,6 +7,7 @@ description: Exposing custom endpoints from Salesforce with Apex REST and Apex S
 import Quiz from '@site/src/components/Quiz';
 import LessonComplete from '@site/src/components/LessonComplete';
 import TopicIconBadge from '@site/src/components/TopicIcon/Badge';
+import LessonDownloads from '@site/src/components/LessonDownloads';
 
 <TopicIconBadge id="inbound-apex-rest-soap" />
 
@@ -129,6 +130,8 @@ sequenceDiagram
 
 [Apex Integration Services](https://trailhead.salesforce.com/content/learn/modules/apex_integration_services)
 includes units on building and testing Apex web services.
+
+<LessonDownloads topicId="inbound-apex-rest-soap" />
 
 ## Quiz
 

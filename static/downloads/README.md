@@ -1,10 +1,11 @@
 # Downloads folder
 
-Put your PDF and PPT files here (e.g. `integration-patterns-slides.pdf`).
+Put your PDF and PPT files here, **named exactly after the lesson's URL slug**:
 
-Everything in `static/` is copied as-is to the built site, so a file placed at
-`static/downloads/integration-patterns-slides.pdf` is reachable at
-`/downloads/integration-patterns-slides.pdf` once the site is running or deployed.
+- `integration-patterns.pdf` and/or `integration-patterns.pptx`
+- `outbound-callouts.pdf` and/or `outbound-callouts.pptx`
+- ...and so on — see `src/data/courseTopics.js` for the full list of valid slugs.
 
-See the main [README.md](../../README.md) at the project root for the exact steps to
-link a download from a lesson page.
+Files named this way are picked up automatically — no other file needs editing.
+See "How to add course material" in the main [README.md](../../README.md) for the
+full walkthrough (including how to do this from github.com with no terminal).
