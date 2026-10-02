@@ -1,0 +1,59 @@
+{
+  "questions": [
+    {
+      "question": "A sales rep clicks \"Submit\" and must see the external system's response (success or failure) on screen before moving on. Which integration style fits best?",
+      "options": [
+        "Remote Process Invocation – Request and Reply (synchronous)",
+        "Fire and Forget (asynchronous, no reply expected)",
+        "Batch Data Synchronization",
+        "Remote Call-In with no response handling"
+      ],
+      "correctIndex": 0,
+      "explanation": "Whenever a human is waiting for an immediate yes/no answer, you need a synchronous request-reply call — the caller blocks until the response comes back."
+    },
+    {
+      "question": "Which statement best describes 'Fire and Forget'?",
+      "options": [
+        "The caller sends a request and does not wait for or care about an immediate response",
+        "The caller sends a request and polls repeatedly until a response arrives",
+        "Two systems exchange full data dumps on a nightly schedule",
+        "An external system calls into Salesforce and waits for Salesforce to respond"
+      ],
+      "correctIndex": 0,
+      "explanation": "Fire and Forget is asynchronous and one-directional: the sender moves on immediately and assumes the receiver will handle the message (or doesn't need a result)."
+    },
+    {
+      "question": "An external order system needs to be notified in near-real time, for every single record, whenever an Opportunity closes in Salesforce. Which pattern is the best fit?",
+      "options": [
+        "Batch Data Synchronization on a nightly schedule",
+        "Event-driven integration using a Platform Event or Change Data Capture",
+        "A once-a-week manual CSV export",
+        "Remote Call-In, where the order system polls Salesforce every 24 hours"
+      ],
+      "correctIndex": 1,
+      "explanation": "Per-record, near-real-time notification without the receiver having to poll is exactly what event-driven integration (Platform Events / CDC) is designed for."
+    },
+    {
+      "question": "What is the main trade-off of choosing Batch Data Synchronization over a real-time pattern?",
+      "options": [
+        "Batch is always more expensive to build than real-time",
+        "Data will be stale between sync runs, but the approach is simpler and easier on API limits",
+        "Batch cannot move more than one record at a time",
+        "Batch requires the external system to expose a SOAP API"
+      ],
+      "correctIndex": 1,
+      "explanation": "Batch jobs trade immediacy for simplicity and efficiency — you accept that data is only as fresh as the last run, in exchange for fewer moving parts and lower API usage."
+    },
+    {
+      "question": "Why is it useful to name an integration pattern (e.g. 'Request and Reply') before writing any code?",
+      "options": [
+        "It has no real benefit, it's just terminology",
+        "It forces you to clarify who initiates the call, whether a reply is required, and the timing — which drives your technical design",
+        "It is required by Salesforce's API documentation",
+        "It automatically generates the Apex code for you"
+      ],
+      "correctIndex": 1,
+      "explanation": "Naming the pattern is a design step: it pins down direction, synchronicity, and volume expectations before you pick a specific technology (REST, SOAP, Platform Events, etc.)."
+    }
+  ]
+}

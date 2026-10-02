@@ -1,0 +1,59 @@
+{
+  "questions": [
+    {
+      "question": "By default, how long does an Apex callout have before it times out?",
+      "options": [
+        "10 seconds",
+        "60 seconds (10 seconds minimum, 120 seconds maximum, configurable)",
+        "There is no timeout",
+        "5 minutes"
+      ],
+      "correctIndex": 1,
+      "explanation": "The default callout timeout is 10 seconds, but you can set `setTimeout()` anywhere from 1 ms up to 120,000 ms (120 seconds). Many teams use 60s as a safe default for slower external APIs."
+    },
+    {
+      "question": "Why can't you make an HTTP callout directly from a trigger?",
+      "options": [
+        "Triggers run inside the same transaction as the DML that fired them, and callouts aren't allowed while there's an open transaction with pending changes — you must go through an asynchronous context like @future or Queueable",
+        "Triggers don't have access to the Http class",
+        "It is technically possible but Salesforce discourages it for style reasons only",
+        "Callouts from triggers are allowed in all cases with no extra steps"
+      ],
+      "correctIndex": 0,
+      "explanation": "Salesforce blocks synchronous callouts from a trigger's transaction (you'd get a \"callout from a trigger context\" error). Hand the callout off to a @future(callout=true) or Queueable method instead."
+    },
+    {
+      "question": "What does a Named Credential give you that hardcoding an endpoint URL and API key in Apex does not?",
+      "options": [
+        "Nothing extra — they behave identically",
+        "Salesforce stores and injects the authentication for you, so secrets never appear in your Apex code or get exposed via debug logs",
+        "Named Credentials make the callout run faster",
+        "Named Credentials remove the need for remote site settings entirely in every scenario"
+      ],
+      "correctIndex": 1,
+      "explanation": "A Named Credential centralizes the endpoint and handles authentication at the platform level, so your Apex code never touches raw credentials — safer and easier to rotate."
+    },
+    {
+      "question": "A callout to a partner API intermittently returns a 503. What's the most robust way to handle this in Apex?",
+      "options": [
+        "Ignore the failure silently and move on",
+        "Catch the exception/non-2xx response and apply a retry strategy (e.g. re-enqueue via Queueable with a limited retry count), rather than retrying forever in a tight loop",
+        "Always retry immediately in an infinite while loop within the same transaction",
+        "Increase the org-wide API limit so 503s stop happening"
+      ],
+      "correctIndex": 1,
+      "explanation": "503s are often transient. A bounded retry (ideally with backoff, done asynchronously via Queueable) handles real-world flakiness without risking runaway loops or governor limit exhaustion."
+    },
+    {
+      "question": "Which governor limit applies specifically to outbound HTTP callouts in a single Apex transaction?",
+      "options": [
+        "Maximum of 100 callouts per transaction, and 120 seconds total cumulative callout time",
+        "Unlimited callouts as long as you use a Named Credential",
+        "Exactly 1 callout per transaction",
+        "Callouts don't count against any governor limit"
+      ],
+      "correctIndex": 0,
+      "explanation": "Apex enforces a maximum of 100 callouts per transaction and a combined 120-second ceiling across all callouts in that transaction — design batch sizes and timeouts with this in mind."
+    }
+  ]
+}

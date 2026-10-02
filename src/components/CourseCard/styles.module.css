@@ -1,0 +1,68 @@
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.card {
+  height: 100%;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  padding: 1.5rem;
+  background: var(--ifm-background-surface-color);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.cardLink:hover .card {
+  border-color: var(--ifm-color-primary);
+  transform: translateY(-2px);
+}
+
+.cardDisabled {
+  opacity: 0.6;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.badgeAvailable {
+  background: var(--ifm-color-primary);
+  color: #fff;
+}
+
+.badgeSoon {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-700);
+}
+
+.cardDescription {
+  margin: 0.75rem 0 0;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.cardCta {
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+}
