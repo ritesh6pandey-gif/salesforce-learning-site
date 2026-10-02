@@ -3,13 +3,35 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Salesforce Learning Hub',
+  title: "Ritesh's Learning Platform",
   tagline: 'Free, independent Salesforce courses for admins and developers',
   favicon: 'img/favicon.ico',
 
   future: {
     v4: true,
   },
+
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: {rel: 'preconnect', href: 'https://fonts.googleapis.com'},
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossorigin: 'anonymous',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&family=JetBrains+Mono:wght@400;500;600&display=swap',
+      },
+    },
+  ],
 
   // TODO before deploying: set this to the real hosted URL (e.g. your
   // GitHub Pages / Cloudflare Pages / Netlify URL) and update baseUrl to
@@ -75,9 +97,9 @@ const config = {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: 'Salesforce Learning Hub',
+        title: "Ritesh's Learning Platform",
         logo: {
-          alt: 'Salesforce Learning Hub Logo',
+          alt: "Ritesh's Learning Platform Logo",
           src: 'img/logo.svg',
         },
         items: [

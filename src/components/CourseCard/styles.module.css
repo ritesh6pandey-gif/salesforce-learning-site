@@ -7,15 +7,17 @@
 .card {
   height: 100%;
   border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 12px;
-  padding: 1.5rem;
+  border-radius: 14px;
+  padding: 1.75rem;
   background: var(--ifm-background-surface-color);
-  transition: border-color 0.15s ease, transform 0.15s ease;
+  box-shadow: var(--rlp-shadow-sm);
+  transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
 }
 
 .cardLink:hover .card {
   border-color: var(--ifm-color-primary);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: var(--rlp-shadow-md);
 }
 
 .cardDisabled {
@@ -32,7 +34,9 @@
 
 .cardTitle {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .badge {

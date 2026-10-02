@@ -1,4 +1,4 @@
-# Salesforce Learning Hub
+# Ritesh's Learning Platform
 
 A free, independent Salesforce learning site built with [Docusaurus](https://docusaurus.io/).
 Version 1 ships one course, **Salesforce Integration**, with ten lesson pages, Mermaid
