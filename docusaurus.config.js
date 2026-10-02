@@ -33,10 +33,7 @@ const config = {
     },
   ],
 
-  // TODO before deploying: set this to the real hosted URL (e.g. your
-  // GitHub Pages / Cloudflare Pages / Netlify URL) and update baseUrl to
-  // match your chosen host's requirements.
-  url: 'https://example.com',
+  url: 'https://salesforce-learning-hub.pages.dev',
   baseUrl: '/',
 
   // TODO before deploying: only needed if you deploy to GitHub Pages.
