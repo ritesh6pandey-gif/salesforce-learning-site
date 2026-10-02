@@ -1,0 +1,59 @@
+{
+  "questions": [
+    {
+      "question": "What does External Services let you do that a plain Flow HTTP Callout action doesn't by itself?",
+      "options": [
+        "Make callouts without a Named Credential",
+        "Register an external API's OpenAPI spec once and get reusable invocable actions usable from both Flow and Apex",
+        "Skip authentication entirely",
+        "Avoid the need for any API specification"
+      ],
+      "correctIndex": 1,
+      "explanation": "External Services turns a registered OpenAPI spec into reusable invocable actions — the declarative equivalent of hand-writing a callout wrapper class."
+    },
+    {
+      "question": "A support admin needs to maintain a simple external callout long after the project ends, with no Apex experience. Which approach fits best?",
+      "options": [
+        "A custom Apex REST class with no documentation",
+        "A Queueable Apex job",
+        "A Flow HTTP Callout action or External Services action, since it's admin-editable without code",
+        "A Batch Apex class scheduled nightly"
+      ],
+      "correctIndex": 2,
+      "explanation": "Declarative tools are specifically valuable when non-developers need to own and maintain the integration."
+    },
+    {
+      "question": "What do declarative HTTP Callout actions in Flow still require for authentication?",
+      "options": [
+        "Nothing, Flow callouts bypass authentication",
+        "A hardcoded API key pasted into a Flow variable",
+        "A separate login screen shown to the Flow user",
+        "A Named Credential, same as an Apex callout"
+      ],
+      "correctIndex": 3,
+      "explanation": "Declarative tools don't bypass the platform's authentication model — they still rely on a Named Credential to call out securely."
+    },
+    {
+      "question": "What's a sign that a declarative (Flow/External Services) integration has outgrown its approach and should move to Apex?",
+      "options": [
+        "It successfully completed its first callout",
+        "It now needs complex branching, retries, or non-trivial payload transformation that's hard to maintain declaratively",
+        "It's being used by more than one Flow",
+        "The external API added a new field"
+      ],
+      "correctIndex": 1,
+      "explanation": "Declarative tools are great for straightforward request/response logic; growing complexity is a signal to reconsider Apex."
+    },
+    {
+      "question": "What happens if a Flow's HTTP Callout action fails and there's no Fault Path configured?",
+      "options": [
+        "Flow automatically retries forever",
+        "Flow silently converts it to a success",
+        "The failure isn't explicitly handled — the same gap as an Apex callout with no catch block",
+        "Salesforce disables the Flow permanently"
+      ],
+      "correctIndex": 2,
+      "explanation": "Just like Apex needs a catch block, Flow needs an explicit Fault Path — skipping it leaves the error path unhandled."
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "questions": [
+    {
+      "question": "What's the main reason to avoid using a named human user's password for a server-to-server integration?",
+      "options": [
+        "It's technically impossible to use a human login for automation",
+        "It breaks the moment that person changes their password or leaves the company",
+        "It makes callouts run slower",
+        "Salesforce blocks this automatically in every org"
+      ],
+      "correctIndex": 1,
+      "explanation": "A dedicated integration user with a proper OAuth flow (JWT Bearer, Client Credentials) is stable and doesn't depend on one person's account lifecycle."
+    },
+    {
+      "question": "Why is \"callout failed\" alone a weak log message for a failed integration?",
+      "options": [
+        "It isn't weak; any log entry is equally useful",
+        "Log messages longer than a few words aren't supported in Apex",
+        "It doesn't give enough context (endpoint, status code, safe payload summary) to debug without reproducing it live",
+        "Salesforce automatically expands short log messages with more detail"
+      ],
+      "correctIndex": 2,
+      "explanation": "Useful failure logs capture enough context to diagnose the issue without having to reproduce it."
+    },
+    {
+      "question": "What's the risk of configuring alerts for every possible event, including minor/expected ones?",
+      "options": [
+        "There is no risk, more alerts are always better",
+        "Salesforce limits orgs to 10 alerts per day",
+        "Noisy alerting trains people to ignore it, so alerts that actually matter get missed",
+        "Over-alerting automatically escalates to Salesforce Support"
+      ],
+      "correctIndex": 2,
+      "explanation": "Alert fatigue is real — tune alerts to things that need action so the signal doesn't get lost in noise."
+    },
+    {
+      "question": "Why should an integration user's permission set be scoped tightly rather than given broad access \"just in case\"?",
+      "options": [
+        "Tight scoping makes callouts run measurably faster",
+        "Salesforce requires minimal permission sets by policy for every integration user",
+        "It has no security benefit, only a cosmetic one",
+        "It limits the blast radius if that credential is ever compromised"
+      ],
+      "correctIndex": 3,
+      "explanation": "Least-privilege access means a leaked credential exposes only what that integration actually needed — not the whole org."
+    },
+    {
+      "question": "What should happen to an integration user's credentials once an integration project is decommissioned?",
+      "options": [
+        "Leave them active indefinitely in case the integration is needed again someday",
+        "Nothing, decommissioned integrations pose no risk",
+        "Convert the user to System Administrator for safekeeping",
+        "Deactivate or tightly re-scope them — unused access left active is unmonitored risk"
+      ],
+      "correctIndex": 3,
+      "explanation": "Stale, forgotten credentials with standing access are a common source of risk — clean them up when the integration they supported is gone."
+    }
+  ]
+}

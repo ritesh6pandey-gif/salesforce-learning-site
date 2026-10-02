@@ -5,6 +5,11 @@ description: The core patterns for connecting Salesforce to other systems, and h
 ---
 
 import Quiz from '@site/src/components/Quiz';
+import LessonComplete from '@site/src/components/LessonComplete';
+import TopicIconBadge from '@site/src/components/TopicIcon/Badge';
+import CourseProgress from '@site/src/components/CourseProgress';
+
+<TopicIconBadge id="integration-patterns" />
 
 # Integration Patterns
 
@@ -13,6 +18,10 @@ integration project needs an answer to one question: **who talks first, and does
 anyone wait for a reply?** The answer determines which pattern you're building, and
 the pattern determines almost everything else — timeouts, retry logic, error handling,
 and which Salesforce feature you reach for.
+
+This is the first lesson in the course — here's where you stand across all ten:
+
+<CourseProgress />
 
 ## The four patterns you'll use most
 
@@ -80,3 +89,5 @@ architecture trade-offs:
 ## Quiz
 
 <Quiz quizId="integration-patterns" />
+
+<LessonComplete topicId="integration-patterns" />

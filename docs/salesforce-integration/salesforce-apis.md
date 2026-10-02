@@ -4,6 +4,12 @@ title: Salesforce APIs
 description: A map of Salesforce's main APIs (REST, SOAP, Bulk, Streaming/Pub-Sub, Metadata) and when to use each.
 ---
 
+import Quiz from '@site/src/components/Quiz';
+import LessonComplete from '@site/src/components/LessonComplete';
+import TopicIconBadge from '@site/src/components/TopicIcon/Badge';
+
+<TopicIconBadge id="salesforce-apis" />
+
 # Salesforce APIs
 
 "The Salesforce API" isn't one thing — it's a family of APIs, each built for a
@@ -91,3 +97,9 @@ This trades immediacy for throughput and resilience against timeouts.
 
 [Platform API Basics](https://trailhead.salesforce.com/content/learn/modules/api_basics)
 covers REST, SOAP, Bulk 2.0, and the Pub/Sub API with guided practice.
+
+## Quiz
+
+<Quiz quizId="salesforce-apis" />
+
+<LessonComplete topicId="salesforce-apis" />

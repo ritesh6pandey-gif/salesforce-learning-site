@@ -12,6 +12,26 @@
   color: #fff;
 }
 
+.heroIllustration {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.heroBanner :global(.container) {
+  position: relative;
+  z-index: 1;
+}
+
+@media screen and (max-width: 996px) {
+  .heroIllustration {
+    opacity: 0.6;
+  }
+}
+
 .heroBanner :global(.hero__title) {
   font-weight: 800;
   letter-spacing: -0.02em;

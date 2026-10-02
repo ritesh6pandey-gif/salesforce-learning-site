@@ -4,6 +4,12 @@ title: Salesforce Connect
 description: Accessing live external data as virtual records (external objects) without copying it into Salesforce.
 ---
 
+import Quiz from '@site/src/components/Quiz';
+import LessonComplete from '@site/src/components/LessonComplete';
+import TopicIconBadge from '@site/src/components/TopicIcon/Badge';
+
+<TopicIconBadge id="salesforce-connect" />
+
 # Salesforce Connect
 
 Every pattern so far either moves data into Salesforce or pushes data out of it.
@@ -71,3 +77,9 @@ native Salesforce objects where automation and reporting need it.
 
 [Quick Start: Salesforce Connect](https://trailhead.salesforce.com/content/learn/projects/quickstart-lightning-connect)
 is a hands-on project that walks through setting up external objects.
+
+## Quiz
+
+<Quiz quizId="salesforce-connect" />
+
+<LessonComplete topicId="salesforce-connect" />

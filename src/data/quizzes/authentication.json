@@ -1,0 +1,59 @@
+{
+  "questions": [
+    {
+      "question": "What does a Named Credential give you that a hardcoded API key in Apex does not?",
+      "options": [
+        "Salesforce stores and injects the secret, so it never lives in Apex code, debug logs, or source control",
+        "Nothing — they behave identically",
+        "It makes the callout run without needing HTTPS",
+        "It bypasses the calling user's permissions entirely"
+      ],
+      "correctIndex": 0,
+      "explanation": "Named Credentials centralize the secret at the platform level; Apex only references the credential by name, so raw tokens never appear in code or logs."
+    },
+    {
+      "question": "Which OAuth flow best fits a trusted server-to-server integration that needs to act as a specific Salesforce user, with no human present?",
+      "options": [
+        "Username-password login with a shared human account",
+        "JWT Bearer Flow",
+        "Clicking \"Login with Salesforce\" each time",
+        "A Session ID copied from a browser tab"
+      ],
+      "correctIndex": 1,
+      "explanation": "The JWT Bearer Flow authenticates as a specific user without a login prompt, and doesn't break when that person changes their password."
+    },
+    {
+      "question": "An external system sends a request to Salesforce with a valid, unexpired access token. What does that token alone guarantee?",
+      "options": [
+        "Full administrator access to every object",
+        "That field-level security is bypassed for this request",
+        "That the request is from an authenticated identity — not what that identity is allowed to do",
+        "That the request is exempt from sharing rules"
+      ],
+      "correctIndex": 2,
+      "explanation": "Authentication proves identity. Authorization — profile, permission sets, field-level security, sharing rules — is enforced separately for whatever user the token resolves to."
+    },
+    {
+      "question": "Why create a dedicated integration user instead of using a real employee's login for an automated integration?",
+      "options": [
+        "A scoped, dedicated user limits the blast radius and doesn't break when that employee changes password or leaves",
+        "It's required by Salesforce's Terms of Service for every integration",
+        "Dedicated users make callouts run faster",
+        "There's no real difference, it's purely a style preference"
+      ],
+      "correctIndex": 0,
+      "explanation": "Tying automation to a specific person's credentials is fragile (password changes, offboarding) and often over-permissioned; a scoped integration user is safer and more stable."
+    },
+    {
+      "question": "What's the risk of giving an integration user the \"System Administrator\" profile \"just to be safe\"?",
+      "options": [
+        "There is no risk, admin access guarantees callouts never fail",
+        "It slows down callouts",
+        "Named Credentials require System Administrator to function",
+        "It violates least privilege — if the credential is ever compromised, the blast radius is the entire org"
+      ],
+      "correctIndex": 3,
+      "explanation": "Scope access to exactly what the integration needs. An over-privileged integration user turns a minor credential leak into a full org compromise."
+    }
+  ]
+}

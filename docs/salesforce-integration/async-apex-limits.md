@@ -4,6 +4,12 @@ title: Async Apex and Governor Limits
 description: Future methods, Queueable, Batch Apex, Scheduled Apex, and the governor limits that shape integration design.
 ---
 
+import Quiz from '@site/src/components/Quiz';
+import LessonComplete from '@site/src/components/LessonComplete';
+import TopicIconBadge from '@site/src/components/TopicIcon/Badge';
+
+<TopicIconBadge id="async-apex-limits" />
+
 # Async Apex and Governor Limits
 
 Integrations are one of the main reasons Salesforce has asynchronous Apex at all:
@@ -91,3 +97,9 @@ System.enqueueJob(new SyncOrderJob(order.Id));
 
 [Asynchronous Apex](https://trailhead.salesforce.com/content/learn/modules/asynchronous_apex)
 covers future methods, Batch Apex, Queueable Apex, and Scheduled Apex with examples.
+
+## Quiz
+
+<Quiz quizId="async-apex-limits" />
+
+<LessonComplete topicId="async-apex-limits" />

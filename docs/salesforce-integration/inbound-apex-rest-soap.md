@@ -4,6 +4,12 @@ title: Inbound Apex REST and SOAP
 description: Exposing custom endpoints from Salesforce with Apex REST and Apex SOAP web services.
 ---
 
+import Quiz from '@site/src/components/Quiz';
+import LessonComplete from '@site/src/components/LessonComplete';
+import TopicIconBadge from '@site/src/components/TopicIcon/Badge';
+
+<TopicIconBadge id="inbound-apex-rest-soap" />
+
 # Inbound Apex REST and SOAP
 
 Sometimes the standard Salesforce REST/SOAP APIs (covered in
@@ -123,3 +129,9 @@ sequenceDiagram
 
 [Apex Integration Services](https://trailhead.salesforce.com/content/learn/modules/apex_integration_services)
 includes units on building and testing Apex web services.
+
+## Quiz
+
+<Quiz quizId="inbound-apex-rest-soap" />
+
+<LessonComplete topicId="inbound-apex-rest-soap" />

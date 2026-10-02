@@ -1,0 +1,49 @@
+{
+  "questions": [
+    {
+      "question": "What annotation exposes an Apex class as a custom REST endpoint?",
+      "options": ["@AuraEnabled", "@RestResource(urlMapping='/...')", "@InvocableMethod", "@future(callout=true)"],
+      "correctIndex": 1,
+      "explanation": "@RestResource with a urlMapping makes an Apex class reachable at /services/apexrest/<mapping>."
+    },
+    {
+      "question": "Why return real HTTP status codes (201, 400, 404, 500) from an Apex REST method instead of always returning 200?",
+      "options": [
+        "Salesforce requires exactly one status code per org",
+        "Status codes have no effect, they're purely cosmetic",
+        "So callers can handle success/failure programmatically using standard HTTP semantics",
+        "200 is the only status code Apex REST supports"
+      ],
+      "correctIndex": 2,
+      "explanation": "Meaningful status codes let any HTTP client branch on outcome without parsing response text — it's the whole point of using HTTP semantics."
+    },
+    {
+      "question": "What's the risk of a \"global without sharing\" Apex REST class with no explicit CRUD/FLS checks?",
+      "options": [
+        "It will fail to compile",
+        "It can let an under-permissioned caller read or write data they shouldn't have access to",
+        "It automatically throws an exception on every request",
+        "There is no risk as long as the endpoint uses HTTPS"
+      ],
+      "correctIndex": 1,
+      "explanation": "\"without sharing\" plus no CRUD/FLS checks means your code — not the platform — is the only thing standing between the caller and the data."
+    },
+    {
+      "question": "When would you build a custom Apex REST endpoint instead of using the standard Salesforce REST API?",
+      "options": [
+        "Always — Apex REST should be the default for every integration",
+        "Never — the standard REST API covers every possible use case",
+        "Only when the external system requires SOAP/WSDL",
+        "When you need custom validation, multi-object transactions, or a payload shape the standard API can't produce"
+      ],
+      "correctIndex": 3,
+      "explanation": "Apex REST is for cases the standard API genuinely can't cover; reaching for it by default adds unnecessary code to maintain and test."
+    },
+    {
+      "question": "In Apex SOAP web services, what does Salesforce auto-generate for the consuming system?",
+      "options": ["A Named Credential", "A WSDL describing the available operations", "A Platform Event definition", "An External Service OpenAPI spec"],
+      "correctIndex": 1,
+      "explanation": "Global classes with webservice methods produce a WSDL that the SOAP client uses to know what operations exist and how to call them."
+    }
+  ]
+}

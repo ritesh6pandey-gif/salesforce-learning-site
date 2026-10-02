@@ -4,6 +4,12 @@ title: Authentication
 description: How Salesforce authenticates outbound callouts and inbound API calls, and why Named Credentials matter.
 ---
 
+import Quiz from '@site/src/components/Quiz';
+import LessonComplete from '@site/src/components/LessonComplete';
+import TopicIconBadge from '@site/src/components/TopicIcon/Badge';
+
+<TopicIconBadge id="authentication" />
+
 # Authentication
 
 Every integration eventually asks: **how does each side prove who it is?** Get this
@@ -79,3 +85,9 @@ existing security model that decides *what* they can do.
 
 [Protect Secrets Using Platform Features](https://trailhead.salesforce.com/content/learn/modules/secure-secrets-storage/protect-secrets-using-platform-features)
 covers Named Credentials and secret storage in more depth.
+
+## Quiz
+
+<Quiz quizId="authentication" />
+
+<LessonComplete topicId="authentication" />

@@ -1,0 +1,59 @@
+{
+  "questions": [
+    {
+      "question": "Why can't you make a synchronous callout directly from a trigger?",
+      "options": [
+        "Triggers don't have access to the Http class",
+        "Callouts are blocked during a transaction with pending DML, and triggers run inside that transaction",
+        "It's allowed, but only for SOAP, not REST",
+        "There's no such restriction"
+      ],
+      "correctIndex": 1,
+      "explanation": "This is a core governor rule; triggers must hand the callout off to an async context like Queueable or @future(callout=true)."
+    },
+    {
+      "question": "What is a key limitation of @future methods compared to Queueable Apex?",
+      "options": [
+        "@future methods can make unlimited callouts",
+        "@future methods always run synchronously",
+        "@future methods can't easily chain into further async work or accept complex parameter types like sObjects",
+        "@future methods can only be called from Batch Apex"
+      ],
+      "correctIndex": 2,
+      "explanation": "@future methods take simple parameter types and are fire-and-forget; Queueable supports complex parameters and job chaining."
+    },
+    {
+      "question": "Why is making one callout per record risky inside a Batch Apex execute() scope of 2,000 records?",
+      "options": [
+        "Batch Apex doesn't support callouts at all",
+        "It has no risk as long as Database.AllowsCallouts is implemented",
+        "Governor limits don't apply inside Batch Apex",
+        "It can easily exceed the 100-callouts-per-transaction limit, since that limit applies per batch scope"
+      ],
+      "correctIndex": 3,
+      "explanation": "Callout limits are enforced per transaction; a 2,000-record scope making one callout each would blow past the 100-callout ceiling. Shrink the scope size when each record needs a callout."
+    },
+    {
+      "question": "What's the danger of chaining Queueable jobs without a bound?",
+      "options": [
+        "There is no danger, Queueable chaining has no limits at all",
+        "It can build an effectively unbounded loop of jobs if there's no stopping condition",
+        "Chained Queueable jobs automatically cancel themselves after 10 chains",
+        "Chaining is disabled by default and must be explicitly turned on"
+      ],
+      "correctIndex": 1,
+      "explanation": "Queueable chaining is powerful for bounded pipelines but dangerous if used to build an open-ended loop — design a stopping condition."
+    },
+    {
+      "question": "Why is \"wrap it in try/catch and move on\" not a complete strategy for async Apex error handling?",
+      "options": [
+        "try/catch blocks are not supported in asynchronous Apex",
+        "Async Apex never throws exceptions",
+        "Salesforce automatically emails all users on any async failure",
+        "Async failures are invisible to the end user by default, so a swallowed exception means nobody finds out"
+      ],
+      "correctIndex": 3,
+      "explanation": "Async jobs run outside any user's direct view — pair error handling with logging or alerting so failures surface instead of disappearing silently."
+    }
+  ]
+}

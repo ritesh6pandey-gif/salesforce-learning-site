@@ -1,0 +1,44 @@
+{
+  "questions": [
+    {
+      "question": "You need to load 800,000 new Lead records overnight into Salesforce. Which API is purpose-built for this?",
+      "options": ["REST API in a loop", "Bulk API 2.0", "SOAP API", "Metadata API"],
+      "correctIndex": 1,
+      "explanation": "Bulk API 2.0 processes large volumes asynchronously in chunks, avoiding the timeouts and heavy limit consumption a REST loop would hit."
+    },
+    {
+      "question": "Which API would you reach for to deploy a new custom field and Apex class from a CI/CD pipeline?",
+      "options": ["REST API", "Bulk API 2.0", "Metadata API / Tooling API", "Streaming API"],
+      "correctIndex": 2,
+      "explanation": "Metadata/Tooling APIs manage org configuration (fields, objects, Apex) — exactly what CI/CD deploy tooling uses, unlike the data-focused REST/Bulk APIs."
+    },
+    {
+      "question": "Why pin a specific API version (e.g. v61.0) in a production integration instead of always using the latest?",
+      "options": [
+        "So a future Salesforce release can't silently change behavior under the integration",
+        "Pinning a version is required by Salesforce for every callout",
+        "Older versions run faster",
+        "It has no real effect, it's just convention"
+      ],
+      "correctIndex": 0,
+      "explanation": "Salesforce supports many API versions concurrently; pinning protects the integration from unannounced behavior changes in newer versions."
+    },
+    {
+      "question": "What's the main difference between Streaming/Pub-Sub API and REST API for a subscriber that needs continuous updates?",
+      "options": [
+        "They are functionally identical",
+        "Streaming/Pub-Sub pushes events to subscribers in near real time, instead of the subscriber repeatedly polling",
+        "Streaming API is only for file uploads",
+        "REST API pushes events automatically too"
+      ],
+      "correctIndex": 1,
+      "explanation": "Streaming/Pub-Sub is a publish-subscribe model; using REST for continuous updates means reintroducing polling, which defeats the purpose."
+    },
+    {
+      "question": "Your integration only needs to read and update a handful of Account records one at a time from a web app. Which API is the simplest default?",
+      "options": ["Bulk API 2.0", "Metadata API", "SOAP API", "REST API"],
+      "correctIndex": 3,
+      "explanation": "REST API is the lightweight default for general-purpose record CRUD; Bulk API is overkill for small, interactive operations."
+    }
+  ]
+}

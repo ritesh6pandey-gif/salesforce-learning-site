@@ -1,0 +1,117 @@
+.box {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem 1.5rem;
+  margin: 1.5rem 0 2rem;
+  background: var(--ifm-background-surface-color);
+  box-shadow: var(--rlp-shadow-sm);
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.count {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.barTrack {
+  margin-top: 0.75rem;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--ifm-color-emphasis-200);
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--ifm-color-primary-light), var(--ifm-color-primary));
+  border-radius: 999px;
+  transition: width 0.25s ease;
+}
+
+.list {
+  list-style: none;
+  margin: 1.1rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.4rem 1rem;
+}
+
+@media screen and (max-width: 700px) {
+  .list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.item {
+  margin: 0;
+}
+
+.itemLink {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--ifm-font-color-base);
+  font-size: 0.92rem;
+  transition: background 0.15s ease;
+}
+
+.itemLink:hover {
+  background: var(--ifm-color-emphasis-100);
+  text-decoration: none;
+  color: var(--ifm-font-color-base);
+}
+
+.itemIcon {
+  display: inline-flex;
+  color: var(--ifm-color-primary);
+  flex-shrink: 0;
+}
+
+.itemTitle {
+  flex: 1;
+}
+
+.itemLinkDone .itemTitle {
+  color: var(--ifm-color-emphasis-700);
+}
+
+.itemStatus {
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 50%;
+  border: 1.5px solid var(--ifm-color-emphasis-300);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.itemStatusDone {
+  border-color: var(--ifm-color-primary);
+  background: var(--ifm-color-primary);
+  color: #fff;
+}
+
+.note {
+  margin: 1rem 0 0;
+  font-size: 0.78rem;
+  color: var(--ifm-color-emphasis-600);
+}

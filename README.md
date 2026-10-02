@@ -3,7 +3,8 @@
 A free, independent Salesforce learning site built with [Docusaurus](https://docusaurus.io/).
 Version 1 ships one course, **Salesforce Integration**, with ten lesson pages, Mermaid
 diagrams, code samples, "common mistakes" sections, links to official Trailhead
-modules, and a self-grading quiz component.
+modules, a self-grading quiz on every lesson (5 questions each), a per-browser
+progress tracker, and a small original icon for each topic.
 
 No ads, no tracking, no logins, no payments. Not affiliated with or endorsed by
 Salesforce.
@@ -28,19 +29,24 @@ npm run serve   # preview the production build locally
 ## Project layout
 
 ```
-docs/salesforce-integration/   one .md file per lesson, in sidebar order
-src/pages/index.js              home page with the course cards
-src/components/CourseCard/      the card shown on the home page per course
-src/components/Quiz/            the quiz component used on lesson pages
-src/data/quizzes/                one JSON file per topic's quiz questions
-static/downloads/                put PDFs/PPTs here; linked from lesson pages
+docs/salesforce-integration/     one .md file per lesson, in sidebar order
+src/pages/index.js                home page with the course cards
+src/components/CourseCard/        the card shown on the home page per course
+src/components/Quiz/              the quiz component used on lesson pages
+src/components/LessonComplete/    the "mark this lesson complete" toggle
+src/components/CourseProgress/    the progress checklist on the course landing page
+src/components/TopicIcon/         the per-topic icon set (icons.js) + circular Badge
+src/data/quizzes/                  one JSON file per topic's quiz questions
+src/data/courseTopics.js           ordered list of lessons — used by progress tracking
+src/utils/progressStore.js         localStorage read/write for lesson completion
+static/downloads/                  put PDFs/PPTs here; linked from lesson pages
 ```
 
 ## How to add a new lesson to an existing course
 
 1. Create a new file in `docs/salesforce-integration/`, e.g.
    `docs/salesforce-integration/my-new-topic.md`.
-2. Start it with frontmatter, following the existing lessons:
+2. Start it with frontmatter and the standard imports, following the existing lessons:
    ```md
    ---
    sidebar_position: 11
@@ -48,10 +54,18 @@ static/downloads/                put PDFs/PPTs here; linked from lesson pages
    description: One sentence describing the lesson.
    ---
 
+   import Quiz from '@site/src/components/Quiz';
+   import LessonComplete from '@site/src/components/LessonComplete';
+   import TopicIconBadge from '@site/src/components/TopicIcon/Badge';
+
+   <TopicIconBadge id="my-new-topic" />
+
    # My New Topic
 
    Your content here...
    ```
+   (`<TopicIconBadge id="my-new-topic" />` will show a plain dot until you add an icon
+   for that id — see "How to add/change a topic icon" below.)
 3. Add a Mermaid diagram with a fenced code block:
    ````md
    ```mermaid
@@ -59,9 +73,21 @@ static/downloads/                put PDFs/PPTs here; linked from lesson pages
        A[Start] --> B[End]
    ```
    ````
-4. Open `sidebars.js` and add `'salesforce-integration/my-new-topic'` to the `items`
+4. End the file with a quiz and the completion toggle:
+   ```md
+   ## Quiz
+
+   <Quiz quizId="my-new-topic" />
+
+   <LessonComplete topicId="my-new-topic" />
+   ```
+   (See "How to add quiz questions" below for the JSON file this needs.)
+5. Open `sidebars.js` and add `'salesforce-integration/my-new-topic'` to the `items`
    array, in the position you want it to appear.
-5. Save — the dev server (`npm start`) picks it up automatically.
+6. Open `src/data/courseTopics.js` and add `{id: 'my-new-topic', title: 'My New Topic'}`
+   to `SALESFORCE_INTEGRATION_TOPICS`, in the same position — this is what makes the
+   lesson show up in the course progress checklist and the homepage progress count.
+7. Save — the dev server (`npm start`) picks it up automatically.
 
 ## How to add a downloadable PDF/PPT to a lesson
 
@@ -78,8 +104,10 @@ static/downloads/                put PDFs/PPTs here; linked from lesson pages
 
 ## How to add quiz questions
 
-**Adding more questions to an existing quiz** (e.g. Integration Patterns or Outbound
-Callouts) needs no code changes — just edit its JSON file:
+Every lesson already has a 5-question quiz (`src/data/quizzes/<topic>.json`).
+
+**Adding more questions to an existing quiz** needs no code changes — just edit its
+JSON file:
 
 1. Open `src/data/quizzes/<topic>.json` (e.g. `integration-patterns.json`).
 2. Add another object to the `questions` array, matching the existing shape:
@@ -110,6 +138,42 @@ Callouts) needs no code changes — just edit its JSON file:
    (The `import` line must go right after the frontmatter, at the top of the file —
    see any existing lesson with a quiz for the exact placement.)
 
+## How progress tracking works
+
+Each lesson ends with a "Mark this lesson complete" toggle
+(`src/components/LessonComplete/`), and the Salesforce Integration landing page
+(`integration-patterns.md`) shows a full checklist with a progress bar
+(`src/components/CourseProgress/`). The Salesforce Integration card on the home page
+also shows a live "X of 10 lessons complete" line once you've checked off at least one.
+
+This is all stored in the visitor's own browser via `localStorage`
+(`src/utils/progressStore.js`) — nothing is sent to a server, there's no account, and
+it won't carry over to a different browser or device. It's meant as a lightweight
+self-check, not a real LMS. If you add or remove a lesson, update
+`src/data/courseTopics.js` to match (see step 6 in "How to add a new lesson" above) —
+that list is the single source of truth the checklist and progress bar read from.
+
+## How to add/change a topic icon
+
+Icons are small, hand-drawn SVGs (no icon library, no Salesforce marks) defined in
+`src/components/TopicIcon/icons.js`.
+
+1. Open `src/components/TopicIcon/icons.js`.
+2. Add or edit an entry keyed by topic id, e.g.:
+   ```js
+   'my-new-topic': (
+     <>
+       <circle cx="12" cy="12" r="8" />
+       <path d="M8 12h8" />
+     </>
+   ),
+   ```
+   Keep paths within the 24x24 viewBox and use `currentColor`-friendly strokes (i.e.
+   don't hardcode a fill/stroke color) so the icon adapts to light/dark mode and to
+   wherever it's used (lesson header, progress checklist, home page card).
+3. Save — it shows up anywhere `<TopicIcon id="my-new-topic" />` or
+   `<TopicIconBadge id="my-new-topic" />` is used.
+
 ## How to add a new course
 
 Version 1 only wires up "Salesforce Integration," but the site is built to grow:
@@ -130,7 +194,10 @@ Version 1 only wires up "Salesforce Integration," but the site is built to grow:
    the existing "Salesforce Integration" entry.
 6. Open `src/pages/index.js` and change that course's entry in the `COURSES` array from
    `status: 'coming-soon'` to `status: 'available'`, and add a `to:` pointing at the
-   new course's first lesson.
+   new course's first lesson. It already has an `iconId` (`'lwc'` or `'agentforce'` —
+   see `src/components/TopicIcon/icons.js`); `trackProgress: true` is only meaningful
+   once that course has its own `courseTopics`-style list and progress components, so
+   leave it off unless you build that out for the new course too.
 
 ## Deployment
 

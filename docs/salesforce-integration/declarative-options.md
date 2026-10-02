@@ -4,6 +4,12 @@ title: Declarative Integration Options
 description: Calling and exposing APIs without Apex, using Flow HTTP Callout actions and External Services.
 ---
 
+import Quiz from '@site/src/components/Quiz';
+import LessonComplete from '@site/src/components/LessonComplete';
+import TopicIconBadge from '@site/src/components/TopicIcon/Badge';
+
+<TopicIconBadge id="declarative-options" />
+
 # Declarative Integration Options
 
 Not every integration needs a developer. Salesforce's declarative tools cover a
@@ -68,3 +74,9 @@ an invocable Apex action exposed so admins can still orchestrate it from Flow.
 
 [External Services](https://trailhead.salesforce.com/content/learn/modules/external-services)
 walks through registering an API spec and using the resulting actions in Flow.
+
+## Quiz
+
+<Quiz quizId="declarative-options" />
+
+<LessonComplete topicId="declarative-options" />

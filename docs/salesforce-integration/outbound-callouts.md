@@ -5,6 +5,10 @@ description: Calling external systems from Apex with HttpRequest/HttpResponse, a
 ---
 
 import Quiz from '@site/src/components/Quiz';
+import LessonComplete from '@site/src/components/LessonComplete';
+import TopicIconBadge from '@site/src/components/TopicIcon/Badge';
+
+<TopicIconBadge id="outbound-callouts" />
 
 # Outbound Callouts
 
@@ -110,3 +114,5 @@ covers Apex REST and SOAP callouts in more depth, with hands-on practice.
 ## Quiz
 
 <Quiz quizId="outbound-callouts" />
+
+<LessonComplete topicId="outbound-callouts" />

@@ -4,6 +4,12 @@ title: Security and Monitoring
 description: Keeping integration endpoints and secrets safe, and how to tell when an integration is failing.
 ---
 
+import Quiz from '@site/src/components/Quiz';
+import LessonComplete from '@site/src/components/LessonComplete';
+import TopicIconBadge from '@site/src/components/TopicIcon/Badge';
+
+<TopicIconBadge id="security-monitoring" />
+
 # Security and Monitoring
 
 A working integration that nobody is watching is a future incident. This lesson pulls
@@ -77,3 +83,9 @@ Practical tools for this, roughly in order of how much setup they need:
 [Real-Time Event Monitoring](https://trailhead.salesforce.com/content/learn/modules/realtime-event-monitoring)
 covers org-level visibility into events, logins, and API usage (features vary by
 edition and add-on licensing).
+
+## Quiz
+
+<Quiz quizId="security-monitoring" />
+
+<LessonComplete topicId="security-monitoring" />

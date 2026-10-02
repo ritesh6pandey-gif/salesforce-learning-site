@@ -4,6 +4,12 @@ title: Platform Events and Change Data Capture
 description: Event-driven integration with custom Platform Events and standard-object Change Data Capture.
 ---
 
+import Quiz from '@site/src/components/Quiz';
+import LessonComplete from '@site/src/components/LessonComplete';
+import TopicIconBadge from '@site/src/components/TopicIcon/Badge';
+
+<TopicIconBadge id="platform-events-cdc" />
+
 # Platform Events and Change Data Capture
 
 Event-driven integration flips the usual question. Instead of "when should I call
@@ -81,3 +87,9 @@ flowchart LR
 
 - [Platform Events Basics](https://trailhead.salesforce.com/content/learn/modules/platform_events_basics)
 - [Change Data Capture Basics](https://trailhead.salesforce.com/content/learn/modules/change-data-capture)
+
+## Quiz
+
+<Quiz quizId="platform-events-cdc" />
+
+<LessonComplete topicId="platform-events-cdc" />

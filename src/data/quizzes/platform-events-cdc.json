@@ -1,0 +1,49 @@
+{
+  "questions": [
+    {
+      "question": "What's the key difference between a Platform Event and a Change Data Capture (CDC) event?",
+      "options": [
+        "They are the same feature with two different names",
+        "A Platform Event is a custom-defined business event you publish yourself; CDC automatically publishes change events for objects you enable",
+        "CDC is for custom objects only; Platform Events are for standard objects only",
+        "Platform Events can only be consumed inside Salesforce, never externally"
+      ],
+      "correctIndex": 1,
+      "explanation": "Platform Events are custom-defined and explicitly published via EventBus.publish(); CDC is automatic record-change notification for objects you've enabled."
+    },
+    {
+      "question": "Which Apex call publishes a custom Platform Event?",
+      "options": ["insert event;", "Database.publish(event)", "System.enqueueJob(event)", "EventBus.publish(event)"],
+      "correctIndex": 3,
+      "explanation": "Platform Events are published via EventBus.publish(), not a plain DML insert."
+    },
+    {
+      "question": "Why is polling for new events an anti-pattern once Platform Events or CDC are available?",
+      "options": [
+        "It reintroduces batch-style latency into what's meant to be a near-real-time, push-based pattern",
+        "Polling is technically impossible in Salesforce",
+        "Polling uses less API bandwidth than subscribing",
+        "There is no downside to polling instead of subscribing"
+      ],
+      "correctIndex": 0,
+      "explanation": "Platform Events/CDC exist specifically to push changes to subscribers; a scheduled job that \"checks for events\" throws away that real-time benefit."
+    },
+    {
+      "question": "Why should event subscribers be designed to be idempotent and tolerant of slight reordering?",
+      "options": [
+        "Events are always delivered in perfect order, this is just a best practice with no real cause",
+        "Idempotency is required by Salesforce's terms of service",
+        "Event delivery isn't guaranteed to be instantaneous or strictly ordered across unrelated records",
+        "Reordering only happens in sandbox orgs, never production"
+      ],
+      "correctIndex": 2,
+      "explanation": "Designing for occasional reordering and possible redelivery makes subscribers robust to the real-world behavior of distributed event delivery."
+    },
+    {
+      "question": "You need to notify an external system the moment a custom \"Order Shipped\" business moment happens, with a custom payload (carrier, tracking number). What's the better fit?",
+      "options": ["CDC — it's always the better choice for any event scenario", "Platform Events, since CDC only reflects field changes, not a custom business payload", "Neither — this requires a nightly batch job", "Salesforce Connect, since it's about external data"],
+      "correctIndex": 1,
+      "explanation": "CDC mirrors field-level changes on records; a bespoke business event with its own custom fields needs a Platform Event you define yourself."
+    }
+  ]
+}

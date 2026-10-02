@@ -1,0 +1,14 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--ifm-color-primary-light), var(--ifm-color-primary));
+  color: #fff;
+  margin-bottom: 0.75rem;
+  box-shadow: var(--rlp-shadow-sm);
+}
+
+[data-theme='dark'] .badge {
+  background: linear-gradient(135deg, var(--ifm-color-primary-darker), var(--ifm-color-primary-dark));
+}

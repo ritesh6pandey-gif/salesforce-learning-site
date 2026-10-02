@@ -1,0 +1,54 @@
+{
+  "questions": [
+    {
+      "question": "What does Salesforce Connect let users do with external data, without ever storing a copy in Salesforce?",
+      "options": [
+        "Automatically migrate it permanently into standard Salesforce objects",
+        "View and interact with it as external objects, queried live from the external system",
+        "Cache it for 24 hours before refreshing",
+        "Encrypt it at rest using Salesforce Shield"
+      ],
+      "correctIndex": 1,
+      "explanation": "Salesforce Connect maps external rows to external objects and queries the source system live — no local copy, no staleness window."
+    },
+    {
+      "question": "Which adapter would you use to connect Salesforce Connect to a system that exposes an OData 4.0 endpoint?",
+      "options": ["The OData 4.0 adapter", "The Cross-Org Adapter", "A Custom Adapter built with DataSource.Connection", "There is no adapter for OData, it requires Apex"],
+      "correctIndex": 0,
+      "explanation": "Salesforce Connect ships standard OData 2.0 and 4.0 adapters for systems that already speak OData — no custom code needed."
+    },
+    {
+      "question": "What's the main trade-off of Salesforce Connect compared to syncing data into native Salesforce objects?",
+      "options": [
+        "Salesforce Connect is always faster than native objects",
+        "There is no trade-off, Salesforce Connect is strictly better in every case",
+        "Data is always current with no storage cost, but read performance depends on the external system staying fast and available",
+        "Salesforce Connect requires copying all the data in nightly"
+      ],
+      "correctIndex": 2,
+      "explanation": "Live access avoids staleness and storage cost, but adds a runtime dependency on the external system's uptime and speed — every view is a live call."
+    },
+    {
+      "question": "Why check for an existing OData endpoint before building a Custom Adapter?",
+      "options": [
+        "Custom Adapters are deprecated and no longer supported",
+        "OData endpoints are required by Salesforce for all external systems",
+        "Custom Adapters can only connect to other Salesforce orgs",
+        "A Custom Adapter is real engineering work; an existing OData endpoint lets you skip that with a standard adapter"
+      ],
+      "correctIndex": 3,
+      "explanation": "Confirm the source can't already speak OData (or isn't another Salesforce org, which uses the Cross-Org Adapter) before committing to custom Apex development."
+    },
+    {
+      "question": "When would a traditional batch sync likely be a better choice than Salesforce Connect for a given object?",
+      "options": [
+        "Whenever the data changes more than once a day",
+        "Never, Salesforce Connect should always be preferred",
+        "Only when the external system is another Salesforce org",
+        "When Salesforce needs heavy reporting/automation against the data, or slightly-stale data is acceptable"
+      ],
+      "correctIndex": 3,
+      "explanation": "Live external objects have real limitations around reporting/automation features and depend on the source system's responsiveness; a sync is often simpler when live access isn't actually needed."
+    }
+  ]
+}

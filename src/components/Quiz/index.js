@@ -4,6 +4,14 @@ import styles from './styles.module.css';
 
 import integrationPatterns from '@site/src/data/quizzes/integration-patterns.json';
 import outboundCallouts from '@site/src/data/quizzes/outbound-callouts.json';
+import salesforceApis from '@site/src/data/quizzes/salesforce-apis.json';
+import authentication from '@site/src/data/quizzes/authentication.json';
+import inboundApexRestSoap from '@site/src/data/quizzes/inbound-apex-rest-soap.json';
+import declarativeOptions from '@site/src/data/quizzes/declarative-options.json';
+import platformEventsCdc from '@site/src/data/quizzes/platform-events-cdc.json';
+import asyncApexLimits from '@site/src/data/quizzes/async-apex-limits.json';
+import salesforceConnect from '@site/src/data/quizzes/salesforce-connect.json';
+import securityMonitoring from '@site/src/data/quizzes/security-monitoring.json';
 
 // Register each topic's quiz JSON here. To add a quiz for a new topic:
 // 1. Create src/data/quizzes/<topic>.json with the same shape as the files above.
@@ -13,6 +21,14 @@ import outboundCallouts from '@site/src/data/quizzes/outbound-callouts.json';
 const QUIZ_MAP = {
   'integration-patterns': integrationPatterns,
   'outbound-callouts': outboundCallouts,
+  'salesforce-apis': salesforceApis,
+  authentication: authentication,
+  'inbound-apex-rest-soap': inboundApexRestSoap,
+  'declarative-options': declarativeOptions,
+  'platform-events-cdc': platformEventsCdc,
+  'async-apex-limits': asyncApexLimits,
+  'salesforce-connect': salesforceConnect,
+  'security-monitoring': securityMonitoring,
 };
 
 export default function Quiz({quizId}) {
