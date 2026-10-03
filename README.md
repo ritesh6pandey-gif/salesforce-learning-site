@@ -1,10 +1,12 @@
 # Ritesh's Learning Platform
 
 A free, independent Salesforce learning site built with [Docusaurus](https://docusaurus.io/).
-Version 1 ships one course, **Salesforce Integration**, with ten lesson pages, Mermaid
-diagrams, code samples, "common mistakes" sections, links to official Trailhead
-modules, a self-grading quiz on every lesson (5 questions each), a per-browser
-progress tracker, and a small original icon for each topic.
+Version 1 ships one course, **Salesforce Integration**, with a Foundations section
+(seven beginner lessons plus a glossary) followed by ten deeper lesson pages —
+seventeen lesson pages in total, plus the glossary — with Mermaid diagrams, code
+samples, "common mistakes" sections, links to official Trailhead modules where one
+could be confirmed, a self-grading quiz on every lesson (5 questions each), a
+per-browser progress tracker, and a small original icon for each topic.
 
 No ads, no tracking, no logins, no payments. Not affiliated with or endorsed by
 Salesforce.
@@ -170,7 +172,9 @@ Each lesson ends with a "Mark this lesson complete" toggle
 (`src/components/LessonComplete/`), and the Salesforce Integration landing page
 (`integration-patterns.md`) shows a full checklist with a progress bar
 (`src/components/CourseProgress/`). The Salesforce Integration card on the home page
-also shows a live "X of 10 lessons complete" line once you've checked off at least one.
+also shows a live "X of 17 lessons complete" line once you've checked off at least
+one. The Foundations group's Glossary page is a reference page, not a tracked lesson —
+it has no quiz or completion toggle and isn't counted in this total.
 
 This is all stored in the visitor's own browser via `localStorage`
 (`src/utils/progressStore.js`) — nothing is sent to a server, there's no account, and

@@ -6,11 +6,25 @@ const sidebars = {
     {
       type: 'category',
       label: 'Salesforce Integration',
-      link: {
-        type: 'doc',
-        id: 'salesforce-integration/integration-patterns',
-      },
+      // No `link` here: this category's first item is now a nested category
+      // (Foundations), not a doc id, so a `link` duplicating a doc that also
+      // appears in `items` breaks Docusaurus's prev/next pagination sequence.
       items: [
+        {
+          type: 'category',
+          label: 'Foundations',
+          // Same reason: no `link` — see note above.
+          items: [
+            'salesforce-integration/inbound-vs-outbound',
+            'salesforce-integration/protocols-explained',
+            'salesforce-integration/request-response-anatomy',
+            'salesforce-integration/json-xml-basics',
+            'salesforce-integration/authentication-basics',
+            'salesforce-integration/why-salesforce-is-different',
+            'salesforce-integration/integration-terms',
+            'salesforce-integration/glossary',
+          ],
+        },
         'salesforce-integration/integration-patterns',
         'salesforce-integration/outbound-callouts',
         'salesforce-integration/salesforce-apis',

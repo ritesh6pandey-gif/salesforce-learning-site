@@ -1,5 +1,5 @@
 ---
-sidebar_position: 10
+sidebar_position: 18
 title: Security and Monitoring
 description: Keeping integration endpoints and secrets safe, and how to tell when an integration is failing.
 ---

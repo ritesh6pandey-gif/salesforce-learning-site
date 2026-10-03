@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 12
 title: Authentication
 description: How Salesforce authenticates outbound callouts and inbound API calls, and why Named Credentials matter.
 ---

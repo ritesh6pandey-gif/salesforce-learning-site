@@ -1,0 +1,59 @@
+{
+  "questions": [
+    {
+      "question": "What's the simplest way to decide whether an integration is inbound or outbound?",
+      "options": [
+        "Check which direction the data ends up flowing",
+        "Ask 'who dials the phone?' — whichever system starts the conversation",
+        "Inbound always uses REST, outbound always uses SOAP",
+        "It depends on which system stores the data permanently"
+      ],
+      "correctIndex": 1,
+      "explanation": "Direction is about who initiates the call, not which way data ends up moving — 'who dials the phone?' is the shortcut for remembering this."
+    },
+    {
+      "question": "A mobile app calls the Salesforce REST API to read and update Account records. From Salesforce's point of view, is this inbound or outbound?",
+      "options": [
+        "Outbound, because Salesforce is sending Account data back",
+        "Inbound, because the mobile app started the conversation",
+        "Neither — REST API calls don't have a direction",
+        "It depends on whether the app is reading or writing"
+      ],
+      "correctIndex": 1,
+      "explanation": "The mobile app calls Salesforce first, so this is inbound — regardless of whether the response sends data back out."
+    },
+    {
+      "question": "Which of these is a typical outbound integration tool?",
+      "options": [
+        "A custom Apex REST endpoint exposed for another system to call",
+        "An Apex callout using HttpRequest and HttpResponse",
+        "The Bulk API used by an external system to load records",
+        "The Pub/Sub API used by another system to subscribe to events"
+      ],
+      "correctIndex": 1,
+      "explanation": "An Apex callout is Salesforce initiating the conversation — that's outbound. The other three options all involve another system calling into Salesforce."
+    },
+    {
+      "question": "Why is it incorrect to say 'inbound integrations are always more secure than outbound ones'?",
+      "options": [
+        "Because outbound integrations never need authentication",
+        "Because both directions need their own authentication, and either can be set up carelessly",
+        "Because inbound integrations don't use HTTP",
+        "Because Salesforce only allows outbound integrations to be secured"
+      ],
+      "correctIndex": 1,
+      "explanation": "Security depends on how each direction is configured, not on direction itself — a carelessly secured inbound endpoint is no safer than a carelessly secured outbound callout."
+    },
+    {
+      "question": "A payment gateway calls a Salesforce endpoint to confirm a payment succeeded. What kind of integration is this?",
+      "options": [
+        "Outbound, because Salesforce receives the confirmation",
+        "Inbound, because the payment gateway started the call",
+        "Batch, because it only happens once per payment",
+        "Neither, because webhooks don't count as integrations"
+      ],
+      "correctIndex": 1,
+      "explanation": "The payment gateway dials the phone, so this is inbound — a classic webhook pattern."
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 11
 title: Salesforce APIs
 description: A map of Salesforce's main APIs (REST, SOAP, Bulk, Streaming/Pub-Sub, Metadata) and when to use each.
 ---

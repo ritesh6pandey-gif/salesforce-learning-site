@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 9
 title: Integration Patterns
 description: The core patterns for connecting Salesforce to other systems, and how to choose between them.
 ---
@@ -20,7 +20,10 @@ anyone wait for a reply?** The answer determines which pattern you're building, 
 the pattern determines almost everything else — timeouts, retry logic, error handling,
 and which Salesforce feature you reach for.
 
-This is the first lesson in the course — here's where you stand across all ten:
+New to integration entirely? The **[Foundations](./inbound-vs-outbound.md)** section
+covers the basics first — direction, protocols, request/response anatomy, JSON/XML,
+authentication, and why Salesforce behaves differently for integrators — before this
+lesson starts building on top of them. Here's where you stand across the whole course:
 
 <CourseProgress />
 

@@ -1,0 +1,59 @@
+{
+  "questions": [
+    {
+      "question": "Which header typically carries an authentication token on an API request?",
+      "options": [
+        "Content-Type",
+        "Accept",
+        "Authorization",
+        "User-Agent"
+      ],
+      "correctIndex": 2,
+      "explanation": "The Authorization header carries credentials, e.g. 'Authorization: Bearer <token>'. Content-Type and Accept describe formats, not identity."
+    },
+    {
+      "question": "In the URL /todos?userId=1, what is userId=1?",
+      "options": [
+        "A path parameter",
+        "A query parameter",
+        "A request header",
+        "The request body"
+      ],
+      "correctIndex": 1,
+      "explanation": "Anything appended after a '?' is a query parameter, typically used to filter, sort, or page results."
+    },
+    {
+      "question": "In the URL /todos/1, what is the 1?",
+      "options": [
+        "A query parameter",
+        "A path parameter identifying a specific resource",
+        "A header value",
+        "A status code"
+      ],
+      "correctIndex": 1,
+      "explanation": "The 1 is part of the URL's structure itself, identifying which specific todo to act on — that makes it a path parameter."
+    },
+    {
+      "question": "Which part of an HTTP response tells you whether the request succeeded?",
+      "options": [
+        "The response body",
+        "The status code",
+        "The Content-Type header",
+        "The request method"
+      ],
+      "correctIndex": 1,
+      "explanation": "The status code (e.g. 200, 404, 500) is the definitive signal of outcome — always check it before trusting the body."
+    },
+    {
+      "question": "Why should you set Content-Type when sending a request with a body?",
+      "options": [
+        "It's purely cosmetic and has no effect",
+        "It tells the receiver what format to expect the body in, so it can parse it correctly",
+        "It changes the HTTP method being used",
+        "It's only needed for GET requests"
+      ],
+      "correctIndex": 1,
+      "explanation": "Content-Type tells the receiving server how to interpret the body (e.g. application/json) — omit it and many APIs will misinterpret or reject the request."
+    }
+  ]
+}

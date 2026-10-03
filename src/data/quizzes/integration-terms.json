@@ -1,0 +1,59 @@
+{
+  "questions": [
+    {
+      "question": "What is a webhook?",
+      "options": [
+        "A tool for repeatedly polling an API on a timer",
+        "A callback where another system calls your endpoint the moment something happens, instead of you asking repeatedly",
+        "A Salesforce-specific authentication method",
+        "A type of SOAP envelope"
+      ],
+      "correctIndex": 1,
+      "explanation": "A webhook flips the usual polling model: instead of you repeatedly asking 'anything new?', the other system calls you the instant there's something to report."
+    },
+    {
+      "question": "Which Salesforce feature uses OData as one of its adapter types?",
+      "options": [
+        "Platform Events",
+        "Salesforce Connect",
+        "Named Credentials",
+        "Bulk API"
+      ],
+      "correctIndex": 1,
+      "explanation": "Salesforce Connect can use an OData adapter to expose external, OData-compatible data as if it were a native Salesforce object."
+    },
+    {
+      "question": "What does GraphQL let a client do that a typical fixed REST endpoint doesn't?",
+      "options": [
+        "Skip authentication entirely",
+        "Specify exactly which fields it wants back, in a single request",
+        "Avoid using HTTP as a transport",
+        "Automatically generate a WSDL contract"
+      ],
+      "correctIndex": 1,
+      "explanation": "GraphQL lets the client shape its own query, requesting exactly the fields it needs instead of getting back a fixed response shape."
+    },
+    {
+      "question": "What transport does the Pub/Sub API use to stream Platform Events and Change Data Capture?",
+      "options": [
+        "SFTP",
+        "gRPC",
+        "CometD",
+        "SOAP"
+      ],
+      "correctIndex": 1,
+      "explanation": "Pub/Sub API is built on gRPC, a high-performance binary RPC framework over HTTP/2."
+    },
+    {
+      "question": "What's a key benefit of file-based integration (e.g. a nightly SFTP drop) over a live API call?",
+      "options": [
+        "It never needs error handling",
+        "Neither side needs to expose a live API at the exact moment of transfer",
+        "It's always faster than any API call",
+        "It automatically validates data correctness"
+      ],
+      "correctIndex": 1,
+      "explanation": "File-based integration decouples timing — the sender drops the file on its own schedule, and the receiver processes it independently, without either side needing to be live at the same instant."
+    }
+  ]
+}

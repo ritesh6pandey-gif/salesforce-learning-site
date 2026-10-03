@@ -1,0 +1,59 @@
+{
+  "questions": [
+    {
+      "question": "What's the difference between a 401 and a 403 response?",
+      "options": [
+        "They mean the same thing",
+        "401 means no valid credentials were provided; 403 means credentials were valid but access is still denied",
+        "401 is a server error; 403 is a client error",
+        "403 means the resource doesn't exist"
+      ],
+      "correctIndex": 1,
+      "explanation": "401 Unauthorized = 'I don't know who you are.' 403 Forbidden = 'I know who you are, and you're still not allowed to do this.'"
+    },
+    {
+      "question": "Why should secrets like API keys never be hardcoded in Apex or Flow?",
+      "options": [
+        "Hardcoded secrets automatically expire after 24 hours",
+        "They become part of version control history permanently and can leak through logs, sandboxes, or anyone with code access",
+        "Apex doesn't allow string literals longer than a few characters",
+        "Flow cannot technically store string values"
+      ],
+      "correctIndex": 1,
+      "explanation": "A hardcoded secret stays recoverable from version control history even after it's 'removed' in a later commit, and can leak through debug logs or sandbox refreshes."
+    },
+    {
+      "question": "What problem does a Named Credential solve?",
+      "options": [
+        "It makes Apex callouts run faster",
+        "It stores endpoint and authentication details outside your code, so secrets are never hardcoded or exposed to Apex",
+        "It replaces the need for any authentication at all",
+        "It only works with SOAP callouts"
+      ],
+      "correctIndex": 1,
+      "explanation": "A Named Credential keeps the real secret outside your Apex code — you call callout:My_API/path, and Salesforce injects the real Authorization header at send time."
+    },
+    {
+      "question": "What is the main advantage of a short-lived access token paired with a refresh token, over one token that never expires?",
+      "options": [
+        "Short-lived tokens are always faster to transmit",
+        "If a short-lived token leaks, the window during which it's dangerous is much smaller",
+        "Refresh tokens eliminate the need for any authorization server",
+        "There is no real advantage"
+      ],
+      "correctIndex": 1,
+      "explanation": "The shorter a token's lifetime, the less damage a leaked copy can do — the refresh token lets the client get a new access token without re-asking for a password."
+    },
+    {
+      "question": "Why is using a named employee's personal login for a server-to-server integration risky?",
+      "options": [
+        "It's actually the recommended best practice",
+        "It breaks the moment that person changes their password or leaves, and blurs audit trails between the person and the integration",
+        "Personal logins can't make API calls at all",
+        "It makes the integration run faster than a dedicated integration user"
+      ],
+      "correctIndex": 1,
+      "explanation": "A dedicated integration user with a scoped permission set avoids this fragility and keeps audit logs clear about what the integration did versus what the person did."
+    }
+  ]
+}
