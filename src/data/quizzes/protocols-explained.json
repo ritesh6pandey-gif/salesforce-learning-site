@@ -1,0 +1,59 @@
+{
+  "questions": [
+    {
+      "question": "Which layer does HTTP belong to?",
+      "options": [
+        "Data format",
+        "Style / protocol",
+        "Transport",
+        "Authentication"
+      ],
+      "correctIndex": 2,
+      "explanation": "HTTP (and HTTPS) is the transport layer — how bytes actually travel between client and server. REST/SOAP are the style layer, and JSON/XML are the data format layer."
+    },
+    {
+      "question": "Which statement best describes REST?",
+      "options": [
+        "A strict XML-only protocol with a formal WSDL contract",
+        "An architectural style where each resource has a URL and HTTP methods act on it, usually with JSON",
+        "A data format for encoding binary files",
+        "A Salesforce-specific authentication mechanism"
+      ],
+      "correctIndex": 1,
+      "explanation": "REST is a style, not a strict standard — resources have URLs, HTTP methods act on them, and it's usually (not exclusively) JSON over HTTP(S)."
+    },
+    {
+      "question": "Which statement best describes SOAP?",
+      "options": [
+        "A lightweight style with no formal contract",
+        "A stricter protocol using XML envelopes and a WSDL-described contract",
+        "A transport layer alternative to HTTP",
+        "A JSON-based messaging format"
+      ],
+      "correctIndex": 1,
+      "explanation": "SOAP is a stricter protocol: XML envelopes, a formal WSDL contract, and built-in standards like WS-Security."
+    },
+    {
+      "question": "In Apex, what happens when a callout receives a 404 response?",
+      "options": [
+        "Apex automatically throws a CalloutException",
+        "The transaction is automatically rolled back",
+        "Nothing automatic — getStatusCode() returns 404, and your code must check it",
+        "The response body is automatically discarded"
+      ],
+      "correctIndex": 2,
+      "explanation": "A 404 (or any status code) doesn't throw by itself in Apex — it's just a number returned by getStatusCode(). Checking it is the caller's responsibility."
+    },
+    {
+      "question": "Why is 'use SOAP because it feels more enterprise' usually bad advice for a new integration?",
+      "options": [
+        "SOAP cannot be used with Salesforce at all",
+        "SOAP always travels over a different transport than HTTP",
+        "Unless there's an explicit requirement to match a SOAP/WSDL contract, REST is simpler, lighter, and better supported by modern tooling",
+        "SOAP doesn't support authentication"
+      ],
+      "correctIndex": 2,
+      "explanation": "The rule of thumb is to default to REST for new work, and only reach for SOAP when the other system requires it — not for its own sake."
+    }
+  ]
+}

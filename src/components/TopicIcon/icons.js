@@ -2,6 +2,69 @@
 // No third-party icon library, no Salesforce marks — just simple shapes
 // that hint at each topic so lesson pages read as less text-only.
 const ICONS = {
+  'inbound-vs-outbound': (
+    <>
+      <path d="M4 8h7" />
+      <path d="M8 5l3 3-3 3" />
+      <path d="M20 16h-7" />
+      <path d="M16 13l-3 3 3 3" />
+    </>
+  ),
+  'protocols-explained': (
+    <>
+      <rect x="3" y="5" width="7" height="6" rx="1.2" />
+      <rect x="14" y="13" width="7" height="6" rx="1.2" />
+      <path d="M10 8h4a3 3 0 0 1 3 3v2" />
+    </>
+  ),
+  'request-response-anatomy': (
+    <>
+      <rect x="3" y="4" width="18" height="6" rx="1.2" />
+      <rect x="3" y="14" width="18" height="6" rx="1.2" />
+      <path d="M7 10v4" />
+      <path d="M17 10v4" />
+    </>
+  ),
+  'json-xml-basics': (
+    <>
+      <path d="M8 4c-2 0-3 1-3 3v2c0 1-.5 1.5-1.5 1.5C4.5 10.5 5 11 5 12s-.5 1.5-1.5 1.5C4.5 13.5 5 14 5 15v2c0 2 1 3 3 3" />
+      <path d="M16 4c2 0 3 1 3 3v2c0 1 .5 1.5 1.5 1.5-1 0-1.5.5-1.5 1.5s.5 1.5 1.5 1.5c-1 0-1.5.5-1.5 1.5v2c0 2-1 3-3 3" />
+    </>
+  ),
+  'authentication-basics': (
+    <>
+      <circle cx="9" cy="9" r="4" />
+      <path d="M12 12l7 7" />
+      <path d="M16 15l2-2" />
+      <path d="M18.5 17.5l2-2" />
+    </>
+  ),
+  'why-salesforce-is-different': (
+    <>
+      <rect x="4" y="4" width="7" height="7" rx="1" />
+      <rect x="13" y="4" width="7" height="7" rx="1" />
+      <rect x="4" y="13" width="7" height="7" rx="1" />
+      <rect x="13" y="13" width="7" height="7" rx="1" />
+      <path d="M7.5 7.5h0" />
+    </>
+  ),
+  'integration-terms': (
+    <>
+      <path d="M5 4h11l3 3v13H5z" />
+      <path d="M16 4v3h3" />
+      <path d="M8 11h8" />
+      <path d="M8 14h8" />
+      <path d="M8 17h5" />
+    </>
+  ),
+  glossary: (
+    <>
+      <path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H6.5A1.5 1.5 0 0 1 5 19.5Z" />
+      <path d="M5 19.5A1.5 1.5 0 0 1 6.5 18H19" />
+      <path d="M8.5 8h7" />
+      <path d="M8.5 11.5h5" />
+    </>
+  ),
   'integration-patterns': (
     <>
       <path d="M8 7a3 3 0 1 0 0 6" />

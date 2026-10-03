@@ -14,6 +14,14 @@
 // (rather than imported) because that file uses ESM `export` syntax without
 // "type": "module" in package.json, which plain Node can't import directly.
 const TOPIC_IDS = [
+  'inbound-vs-outbound',
+  'protocols-explained',
+  'request-response-anatomy',
+  'json-xml-basics',
+  'authentication-basics',
+  'why-salesforce-is-different',
+  'integration-terms',
+  'glossary',
   'integration-patterns',
   'outbound-callouts',
   'salesforce-apis',

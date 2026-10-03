@@ -2,6 +2,13 @@ import React, {useMemo, useState} from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 
+import inboundVsOutbound from '@site/src/data/quizzes/inbound-vs-outbound.json';
+import protocolsExplained from '@site/src/data/quizzes/protocols-explained.json';
+import requestResponseAnatomy from '@site/src/data/quizzes/request-response-anatomy.json';
+import jsonXmlBasics from '@site/src/data/quizzes/json-xml-basics.json';
+import authenticationBasics from '@site/src/data/quizzes/authentication-basics.json';
+import whySalesforceIsDifferent from '@site/src/data/quizzes/why-salesforce-is-different.json';
+import integrationTerms from '@site/src/data/quizzes/integration-terms.json';
 import integrationPatterns from '@site/src/data/quizzes/integration-patterns.json';
 import outboundCallouts from '@site/src/data/quizzes/outbound-callouts.json';
 import salesforceApis from '@site/src/data/quizzes/salesforce-apis.json';
@@ -19,6 +26,13 @@ import securityMonitoring from '@site/src/data/quizzes/security-monitoring.json'
 // 3. Drop <Quiz quizId="<topic>" /> into that lesson's .md page.
 // To add more questions to an EXISTING quiz, just edit its JSON file — no code changes needed.
 const QUIZ_MAP = {
+  'inbound-vs-outbound': inboundVsOutbound,
+  'protocols-explained': protocolsExplained,
+  'request-response-anatomy': requestResponseAnatomy,
+  'json-xml-basics': jsonXmlBasics,
+  'authentication-basics': authenticationBasics,
+  'why-salesforce-is-different': whySalesforceIsDifferent,
+  'integration-terms': integrationTerms,
   'integration-patterns': integrationPatterns,
   'outbound-callouts': outboundCallouts,
   'salesforce-apis': salesforceApis,

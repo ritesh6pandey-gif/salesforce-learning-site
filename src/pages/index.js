@@ -9,8 +9,8 @@ const COURSES = [
   {
     title: 'Salesforce Integration',
     description:
-      'Learn how Salesforce talks to the outside world: integration patterns, outbound and inbound APIs, authentication, Platform Events, async Apex, Salesforce Connect, and keeping it secure.',
-    to: '/docs/salesforce-integration/integration-patterns',
+      'Learn how Salesforce talks to the outside world: integration foundations, patterns, outbound and inbound APIs, authentication, Platform Events, async Apex, Salesforce Connect, and keeping it secure.',
+    to: '/docs/salesforce-integration/inbound-vs-outbound',
     status: 'available',
     iconId: 'integration-patterns',
     trackProgress: true,

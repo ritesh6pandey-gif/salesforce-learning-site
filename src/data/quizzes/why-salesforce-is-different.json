@@ -1,0 +1,59 @@
+{
+  "questions": [
+    {
+      "question": "Why does Salesforce enforce strict governor limits?",
+      "options": [
+        "To make Apex harder to learn",
+        "Because Salesforce is multi-tenant — shared infrastructure must be protected from any one org's runaway code",
+        "Governor limits only apply to free Developer Edition orgs",
+        "To discourage the use of asynchronous Apex"
+      ],
+      "correctIndex": 1,
+      "explanation": "Multi-tenancy means many orgs share the same underlying infrastructure — governor limits stop one org's code from degrading performance for everyone else."
+    },
+    {
+      "question": "How many callouts can a single Apex transaction make, according to this course?",
+      "options": [
+        "10",
+        "50",
+        "100",
+        "Unlimited"
+      ],
+      "correctIndex": 2,
+      "explanation": "A single transaction can make up to 100 callouts."
+    },
+    {
+      "question": "Why does a callout fail if it happens after uncommitted DML in the same transaction?",
+      "options": [
+        "Salesforce blocks any callout once the transaction has made uncommitted database changes, to prevent inconsistent state",
+        "Apex doesn't support DML and callouts in the same class at all",
+        "Callouts automatically commit any pending DML first",
+        "This is only a problem in sandboxes, not production"
+      ],
+      "correctIndex": 0,
+      "explanation": "Once a transaction has uncommitted DML, Salesforce blocks further callouts — the fix is usually to do the callout first, then the DML, or move the callout to its own asynchronous transaction."
+    },
+    {
+      "question": "Why should a production integration pin a specific API version in its endpoint URL?",
+      "options": [
+        "Pinning a version is required by law",
+        "An unpinned call could see Salesforce's behavior change on a future release; pinning keeps it stable until you deliberately upgrade",
+        "Only SOAP API supports versioning",
+        "Pinning a version makes callouts run without any governor limits"
+      ],
+      "correctIndex": 1,
+      "explanation": "Pinning a version (e.g. v61.0) protects your integration from unexpected behavior changes introduced in later Salesforce releases."
+    },
+    {
+      "question": "Why can't a trigger make a direct, synchronous callout?",
+      "options": [
+        "Triggers are not allowed to call Apex methods",
+        "A trigger's transaction is likely to include uncommitted DML, and no callout is allowed after uncommitted DML in the same transaction",
+        "Triggers can only run on weekends",
+        "Callouts are disabled by default in all orgs"
+      ],
+      "correctIndex": 1,
+      "explanation": "Since a trigger's transaction typically includes the DML that fired it, a direct callout would violate the no-callout-after-uncommitted-DML rule — the work has to move to an asynchronous context instead."
+    }
+  ]
+}

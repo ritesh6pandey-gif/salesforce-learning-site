@@ -1,5 +1,5 @@
 ---
-sidebar_position: 9
+sidebar_position: 17
 title: Salesforce Connect
 description: Accessing live external data as virtual records (external objects) without copying it into Salesforce.
 ---

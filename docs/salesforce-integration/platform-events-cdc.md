@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 15
 title: Platform Events and Change Data Capture
 description: Event-driven integration with custom Platform Events and standard-object Change Data Capture.
 ---

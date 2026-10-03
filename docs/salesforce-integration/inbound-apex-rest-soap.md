@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 13
 title: Inbound Apex REST and SOAP
 description: Exposing custom endpoints from Salesforce with Apex REST and Apex SOAP web services.
 ---

@@ -1,0 +1,59 @@
+{
+  "questions": [
+    {
+      "question": "What is a JSON array?",
+      "options": [
+        "A set of key/value pairs wrapped in { }",
+        "An ordered list of values wrapped in [ ]",
+        "A reserved JSON keyword meaning 'empty'",
+        "An XML-only concept with no JSON equivalent"
+      ],
+      "correctIndex": 1,
+      "explanation": "An array is an ordered list, written with square brackets — e.g. \"tags\": [\"urgent\", \"personal\"]."
+    },
+    {
+      "question": "Why must an Apex wrapper class's field names match the JSON keys to use JSON.deserialize?",
+      "options": [
+        "They don't need to match — Apex guesses the mapping automatically",
+        "deserialize maps JSON keys to Apex fields by exact name, so a mismatch leaves the field unpopulated",
+        "Apex only supports deserializing into Map, never a custom class",
+        "JSON keys are automatically converted to uppercase before matching"
+      ],
+      "correctIndex": 1,
+      "explanation": "JSON.deserialize matches keys to field names case-sensitively — if the JSON key is userId but the Apex field is userID, it won't populate."
+    },
+    {
+      "question": "What's the difference between JSON.deserialize and JSON.deserializeUntyped?",
+      "options": [
+        "There is no difference, they're aliases",
+        "deserialize only works with XML, deserializeUntyped only works with JSON",
+        "deserialize maps JSON into a specific Apex class; deserializeUntyped produces generic Map/List structures",
+        "deserializeUntyped is faster but less accurate"
+      ],
+      "correctIndex": 2,
+      "explanation": "deserialize(jsonString, MyClass.class) gives you a typed object; deserializeUntyped gives you generic Map/List structures you cast yourself."
+    },
+    {
+      "question": "In XML, what is a namespace (e.g. declared with xmlns) used for?",
+      "options": [
+        "Encrypting the XML content",
+        "Avoiding naming collisions when XML from different sources is combined",
+        "Compressing the XML file size",
+        "Declaring the XML version number"
+      ],
+      "correctIndex": 1,
+      "explanation": "Namespaces keep elements like <soap:Envelope> distinct from any other <Envelope> that might appear elsewhere in a combined document."
+    },
+    {
+      "question": "Why shouldn't you assume a JSON field always exists in a real-world API response?",
+      "options": [
+        "JSON doesn't support optional fields at all",
+        "APIs often omit a key entirely when it has no value, rather than sending null",
+        "Deserialization always fails if any field is missing",
+        "Missing fields automatically default to the number 0"
+      ],
+      "correctIndex": 1,
+      "explanation": "A missing key is different from a null value — check for null (or that the field was populated) after deserializing before relying on it."
+    }
+  ]
+}

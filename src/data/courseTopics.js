@@ -2,6 +2,13 @@
 // used by the progress tracker and the course overview checklist.
 // Keep this in sync with sidebars.js when you add/reorder lessons.
 export const SALESFORCE_INTEGRATION_TOPICS = [
+  {id: 'inbound-vs-outbound', title: 'Inbound vs Outbound Integration'},
+  {id: 'protocols-explained', title: 'HTTP, REST and SOAP: Protocols Explained'},
+  {id: 'request-response-anatomy', title: 'Anatomy of a Request and Response'},
+  {id: 'json-xml-basics', title: 'JSON and XML Basics'},
+  {id: 'authentication-basics', title: 'Authentication Basics'},
+  {id: 'why-salesforce-is-different', title: 'Why Salesforce Is Different for Integrators'},
+  {id: 'integration-terms', title: 'Terms You Will Meet'},
   {id: 'integration-patterns', title: 'Integration Patterns'},
   {id: 'outbound-callouts', title: 'Outbound Callouts'},
   {id: 'salesforce-apis', title: 'Salesforce APIs'},
