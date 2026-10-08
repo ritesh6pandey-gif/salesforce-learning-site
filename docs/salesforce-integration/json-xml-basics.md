@@ -8,6 +8,7 @@ import Quiz from '@site/src/components/Quiz';
 import LessonComplete from '@site/src/components/LessonComplete';
 import TopicIconBadge from '@site/src/components/TopicIcon/Badge';
 import LessonDownloads from '@site/src/components/LessonDownloads';
+import CodeBuilder from '@site/src/components/CodeBuilder';
 
 <TopicIconBadge id="json-xml-basics" />
 
@@ -94,6 +95,81 @@ collisions when XML from different sources gets combined, usually declared with
 | Same todo | `{"id": 1, "title": "...", "completed": false}` | `<todo id="1" completed="false"><title>...</title></todo>` |
 | Readability | Compact, close to how developers think in objects | More verbose, but self-describing with named tags |
 | Typical use today | Most new REST APIs | SOAP services, legacy enterprise systems, document-style data |
+
+## Building and serializing a nested JSON object
+
+Deserializing turns JSON into Apex. Going the other way — building an Apex object and
+**serializing** it into a JSON string to send in a callout — follows the same wrapper
+class idea, just in reverse. For a nested JSON body like:
+
+```json
+{
+  "amount": 1234,
+  "Payment": {
+    "token": "77473"
+  }
+}
+```
+
+you need an **outer** wrapper class for the top-level object, and an **inner** wrapper
+class (nested inside it) for the nested `Payment` object. The build order is always
+the same six steps:
+
+1. Write the outer wrapper class, with an inner wrapper class nested inside it for the
+   nested JSON object.
+2. Create an instance of the outer class, and an instance of the inner class.
+3. Populate the inner instance's fields first.
+4. Assign the inner instance to the outer instance's property for it.
+5. Populate the outer instance's own fields.
+6. Call `JSON.serialize()` (or `JSON.serializePretty()` for a readable, indented
+   string) on the **outer** instance — that one call walks the whole nested structure
+   for you — and use the result as the callout's request body.
+
+The editor below is live — edit it while you teach, then hit **Reset** to put the
+original example back:
+
+<CodeBuilder
+  title="Apex: build and serialize a nested wrapper class"
+  initialCode={`// 1. Outer wrapper class, with an inner wrapper class nested inside it
+public class ExampleRequest {
+    public Integer amount;
+    public Payment Payment;
+
+    public class Payment {
+        public String token;
+    }
+}
+
+// 2. Create an instance of the outer class, and of the inner class
+ExampleRequest outerObject = new ExampleRequest();
+ExampleRequest.Payment innerObject = new ExampleRequest.Payment();
+
+// 3. Populate the inner instance's fields first
+innerObject.token = '77473';
+
+// 4. Assign the inner instance to the outer instance's property
+outerObject.Payment = innerObject;
+
+// 5. Populate the outer instance's own fields
+outerObject.amount = 1234;
+
+// 6. Serialize the outer instance — this walks the nested object too
+String jsonBody = JSON.serializePretty(outerObject);
+System.debug(jsonBody);
+
+// Use it as the body of an outbound callout
+HttpRequest request = new HttpRequest();
+request.setEndpoint('callout:Payment_API/charge');
+request.setMethod('POST');
+request.setHeader('Content-Type', 'application/json');
+request.setBody(jsonBody);
+`}
+/>
+
+Notice the field names matter here too, just like with `deserialize` below — Apex
+serializes a public field named `Payment` into a JSON key named `"Payment"`,
+and `token` into `"token"`. Get the casing or naming wrong and the JSON you send
+won't match what the receiving API expects.
 
 ## Salesforce connection: parsing JSON into a wrapper class
 

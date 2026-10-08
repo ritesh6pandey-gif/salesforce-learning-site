@@ -125,3 +125,65 @@ div[class^='codeBlockContainer'] {
 .footer__title {
   font-weight: 700;
 }
+
+/*
+ * Token colors for the CodeBuilder editor (src/components/CodeBuilder).
+ * This uses raw prismjs (CSS-class-based tokens), a different mechanism
+ * from the prism-react-renderer theme used for static ```code blocks
+ * elsewhere on the site — so it needs its own color rules.
+ */
+.token.comment {
+  color: var(--ifm-color-emphasis-600);
+  font-style: italic;
+}
+
+.token.keyword {
+  color: var(--ifm-color-primary-darker);
+  font-weight: 600;
+}
+
+.token.string,
+.token.soql {
+  color: #0a7a3d;
+}
+
+.token.number,
+.token.boolean {
+  color: #b45309;
+}
+
+.token.class-name {
+  color: #7c3aed;
+}
+
+.token.annotation {
+  color: #be185d;
+  font-weight: 600;
+}
+
+.token.punctuation,
+.token.operator {
+  color: var(--ifm-color-emphasis-700);
+}
+
+[data-theme='dark'] .token.keyword {
+  color: var(--ifm-color-primary-lighter);
+}
+
+[data-theme='dark'] .token.string,
+[data-theme='dark'] .token.soql {
+  color: #4ade80;
+}
+
+[data-theme='dark'] .token.number,
+[data-theme='dark'] .token.boolean {
+  color: #fbbf24;
+}
+
+[data-theme='dark'] .token.class-name {
+  color: #c4b5fd;
+}
+
+[data-theme='dark'] .token.annotation {
+  color: #f472b6;
+}
