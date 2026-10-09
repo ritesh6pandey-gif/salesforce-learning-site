@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 title: Authentication Basics
 description: Authentication vs authorization in plain language, the common methods, and why secrets never belong in code.
 ---

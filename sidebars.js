@@ -18,6 +18,7 @@ const sidebars = {
             'salesforce-integration/inbound-vs-outbound',
             'salesforce-integration/protocols-explained',
             'salesforce-integration/request-response-anatomy',
+            'salesforce-integration/callouts-in-salesforce',
             'salesforce-integration/json-xml-basics',
             'salesforce-integration/authentication-basics',
             'salesforce-integration/why-salesforce-is-different',

@@ -17,6 +17,7 @@ const TOPIC_IDS = [
   'inbound-vs-outbound',
   'protocols-explained',
   'request-response-anatomy',
+  'callouts-in-salesforce',
   'json-xml-basics',
   'authentication-basics',
   'why-salesforce-is-different',

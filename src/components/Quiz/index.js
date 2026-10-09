@@ -5,6 +5,7 @@ import styles from './styles.module.css';
 import inboundVsOutbound from '@site/src/data/quizzes/inbound-vs-outbound.json';
 import protocolsExplained from '@site/src/data/quizzes/protocols-explained.json';
 import requestResponseAnatomy from '@site/src/data/quizzes/request-response-anatomy.json';
+import calloutsInSalesforce from '@site/src/data/quizzes/callouts-in-salesforce.json';
 import jsonXmlBasics from '@site/src/data/quizzes/json-xml-basics.json';
 import authenticationBasics from '@site/src/data/quizzes/authentication-basics.json';
 import whySalesforceIsDifferent from '@site/src/data/quizzes/why-salesforce-is-different.json';
@@ -29,6 +30,7 @@ const QUIZ_MAP = {
   'inbound-vs-outbound': inboundVsOutbound,
   'protocols-explained': protocolsExplained,
   'request-response-anatomy': requestResponseAnatomy,
+  'callouts-in-salesforce': calloutsInSalesforce,
   'json-xml-basics': jsonXmlBasics,
   'authentication-basics': authenticationBasics,
   'why-salesforce-is-different': whySalesforceIsDifferent,

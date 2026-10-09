@@ -1,5 +1,5 @@
 ---
-sidebar_position: 8
+sidebar_position: 9
 title: Glossary
 description: Plain, one-line definitions for the integration terms used throughout this course.
 ---

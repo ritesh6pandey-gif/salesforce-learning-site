@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 8
 title: Terms You Will Meet
 description: Plain explanations of webhook, OData, GraphQL, gRPC, CometD, file/queue-based integration, and OAuth.
 ---

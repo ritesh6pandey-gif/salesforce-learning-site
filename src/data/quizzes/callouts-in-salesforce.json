@@ -1,0 +1,54 @@
+{
+  "questions": [
+    {
+      "question": "What is a callout, in Salesforce terms?",
+      "options": [
+        "A way to send an HTTP request from Salesforce to an external system and receive a response",
+        "A type of validation rule",
+        "A scheduled report that emails a user",
+        "A Flow screen component"
+      ],
+      "correctIndex": 0,
+      "explanation": "A callout is Salesforce (via Apex, Flow, or another tool) sending an HTTP request out to an external system — a REST or SOAP API, a payment gateway, an ERP — and getting back a response."
+    },
+    {
+      "question": "In a synchronous callout, does the user wait for the response?",
+      "options": [
+        "Yes — execution is blocking, and the next step only happens after the response arrives",
+        "No — the user never waits for a synchronous callout",
+        "Only if the callout fails",
+        "It depends on the HTTP method used, not on sync vs async"
+      ],
+      "correctIndex": 0,
+      "explanation": "Synchronous callouts are blocking: Salesforce waits for the response before continuing to the next line of code, and the user waits for that to resolve."
+    },
+    {
+      "question": "Which of these is NOT one of the standard ways to make an asynchronous callout in Apex?",
+      "options": ["@future method", "Queueable Apex", "Batch Apex (with Database.AllowsCallouts)", "A standard validation rule"],
+      "correctIndex": 3,
+      "explanation": "Async callouts run through @future methods, Queueable Apex, Batch Apex (implementing Database.AllowsCallouts), or Scheduled Apex — not through declarative validation rules, which can't make callouts at all."
+    },
+    {
+      "question": "Do synchronous and asynchronous callouts share the same governor limits (100 callouts per transaction, 120-second combined timeout)?",
+      "options": [
+        "No, asynchronous callouts have no limits",
+        "Yes — both are subject to the same callout limits per transaction",
+        "Only synchronous callouts are limited",
+        "The limits only apply in sandbox orgs, not production"
+      ],
+      "correctIndex": 1,
+      "explanation": "The 100-callouts/120-seconds-per-transaction limit applies to both synchronous and asynchronous contexts — async just means the limit applies to a background transaction instead of the user's foreground one."
+    },
+    {
+      "question": "A nightly job needs to sync thousands of records with an external ERP, and nobody is waiting on screen for it to finish. Which approach fits best?",
+      "options": [
+        "A synchronous callout triggered from a button click",
+        "An asynchronous callout (e.g. Batch Apex or Scheduled Apex), since it's long-running and no immediate response is needed",
+        "A validation rule",
+        "A Visualforce page refresh"
+      ],
+      "correctIndex": 1,
+      "explanation": "Large-volume, long-running work where nothing is waiting for an instant answer is exactly what asynchronous callouts are for — the job runs in the background and the user isn't blocked."
+    }
+  ]
+}

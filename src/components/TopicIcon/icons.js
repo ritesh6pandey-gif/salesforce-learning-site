@@ -25,6 +25,14 @@ const ICONS = {
       <path d="M17 10v4" />
     </>
   ),
+  'callouts-in-salesforce': (
+    <>
+      <rect x="3" y="9" width="7" height="6" rx="1.3" />
+      <path d="M10 10.5h4.5" />
+      <path d="M13 7.5 17 10.5l-4 3" />
+      <path d="M17 10.5c2.2 0 3.5 1.1 3.5 3v3" />
+    </>
+  ),
   'json-xml-basics': (
     <>
       <path d="M8 4c-2 0-3 1-3 3v2c0 1-.5 1.5-1.5 1.5C4.5 10.5 5 11 5 12s-.5 1.5-1.5 1.5C4.5 13.5 5 14 5 15v2c0 2 1 3 3 3" />

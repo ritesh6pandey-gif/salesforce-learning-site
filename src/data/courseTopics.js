@@ -5,6 +5,7 @@ export const SALESFORCE_INTEGRATION_TOPICS = [
   {id: 'inbound-vs-outbound', title: 'Inbound vs Outbound Integration'},
   {id: 'protocols-explained', title: 'HTTP, REST and SOAP: Protocols Explained'},
   {id: 'request-response-anatomy', title: 'Anatomy of a Request and Response'},
+  {id: 'callouts-in-salesforce', title: 'Callouts in Salesforce'},
   {id: 'json-xml-basics', title: 'JSON and XML Basics'},
   {id: 'authentication-basics', title: 'Authentication Basics'},
   {id: 'why-salesforce-is-different', title: 'Why Salesforce Is Different for Integrators'},
