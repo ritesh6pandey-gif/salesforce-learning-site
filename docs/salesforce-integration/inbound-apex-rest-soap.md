@@ -19,6 +19,27 @@ maybe it needs a custom payload shape, or needs to trigger multi-object business
 in one call. That's what **Apex REST** and **Apex SOAP web services** are for: you
 write the endpoint, Salesforce exposes it.
 
+## Standard REST API vs. Apex REST Service
+
+Before building a custom endpoint, it's worth being clear on what the **standard REST
+API** already gives you for free, so an Apex REST Service only gets built where it's
+actually earning its keep:
+
+![Comparison of Salesforce's standard built-in REST API against a custom Apex REST Service, including example requests/responses, a key-differences table, common use cases, and a reference table of Apex REST annotations](/img/lessons/apex-rest-services.webp)
+
+| Aspect | Standard REST API | Apex REST Service |
+|---|---|---|
+| Purpose | Pre-built CRUD on Salesforce data, no code | Custom API for your own business logic |
+| Endpoint | `/services/data/vXX.X/...` | `/services/apexrest/<yourEndpoint>` |
+| Flexibility | Limited to standard create/read/update/delete operations | Fully customizable — any logic you can write in Apex |
+| Implementation | None — it's already there | An Apex class annotated with `@RestResource` |
+| Typical use | Simple data operations | Complex logic, multi-object transactions, integrations |
+| Authentication | OAuth 2.0, Session ID, Named Credential | Same options — authentication doesn't change |
+
+In short: reach for the standard REST API first (see
+[Salesforce APIs](./salesforce-apis.md)) — build an Apex REST Service only when you
+need logic the standard API genuinely can't express in one call.
+
 ## Apex REST
 
 Annotate a class with `@RestResource` and its methods with the HTTP verb they handle:
@@ -70,6 +91,48 @@ Content-Type: application/json
 
 { "externalId": "EXT-4821", "amount": 199.99 }
 ```
+
+### A GET endpoint example
+
+Not every Apex REST method writes data — a `@HttpGet` method can read a path parameter
+straight off the URL and return a filtered list, same idea as a standard REST query but
+shaped exactly how the caller needs it:
+
+```apex
+@RestResource(urlMapping='/opportunities/*')
+global with sharing class OpportunityRestService {
+
+    @HttpGet
+    global static List<Opportunity> getOpportunities() {
+        RestRequest req = RestContext.request;
+
+        // The account Id is the last URL segment, e.g.
+        // /services/apexrest/opportunities/001XXXXXXXXXXXXXXX
+        String accountId = req.requestURI.substring(
+            req.requestURI.lastIndexOf('/') + 1
+        );
+
+        return [
+            SELECT Id, Name, StageName, Amount, CloseDate
+            FROM Opportunity
+            WHERE AccountId = :accountId
+            AND IsClosed = false
+        ];
+    }
+}
+```
+
+## Important Apex REST annotations and classes
+
+| Annotation / class | Purpose |
+|---|---|
+| `@RestResource(urlMapping='/path')` | Marks the class as a REST resource and defines its endpoint URL |
+| `@HttpGet` | Handles HTTP GET requests |
+| `@HttpPost` | Handles HTTP POST requests |
+| `@HttpPut` | Handles HTTP PUT requests |
+| `@HttpDelete` | Handles HTTP DELETE requests |
+| `RestContext.request` | The incoming request — headers, URL parameters, body |
+| `RestContext.response` | Sets the outgoing response's status code, headers, and body |
 
 ## Apex SOAP web services
 

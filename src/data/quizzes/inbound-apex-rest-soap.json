@@ -44,6 +44,18 @@
       "options": ["A Named Credential", "A WSDL describing the available operations", "A Platform Event definition", "An External Service OpenAPI spec"],
       "correctIndex": 1,
       "explanation": "Global classes with webservice methods produce a WSDL that the SOAP client uses to know what operations exist and how to call them."
+    },
+    {
+      "question": "Which object gives an Apex REST method access to the incoming request's URI, parameters, and body?",
+      "options": ["RestContext.response", "HttpRequest", "RestContext.request", "ResponseWrapper"],
+      "correctIndex": 2,
+      "explanation": "RestContext.request exposes the incoming request (requestURI, params, requestBody, headers) inside an @RestResource method; RestContext.response is for shaping what gets sent back."
+    },
+    {
+      "question": "Which annotation marks a method as the handler for GET requests in an Apex REST class?",
+      "options": ["@HttpPost", "@RestResource", "@AuraEnabled", "@HttpGet"],
+      "correctIndex": 3,
+      "explanation": "@HttpGet, @HttpPost, @HttpPut, and @HttpDelete each mark the method that handles that HTTP verb on the class's @RestResource endpoint."
     }
   ]
 }
