@@ -54,6 +54,23 @@
       ],
       "correctIndex": 3,
       "explanation": "Scope access to exactly what the integration needs. An over-privileged integration user turns a minor credential leak into a full org compromise."
+    },
+    {
+      "question": "What is a Connected App, in Salesforce terms?",
+      "options": [
+        "The external application itself, running outside Salesforce",
+        "A configuration inside Salesforce that defines how an external application is allowed to authenticate and access Salesforce via OAuth 2.0",
+        "A type of Named Credential used only for outbound callouts",
+        "A Flow template for building login screens"
+      ],
+      "correctIndex": 1,
+      "explanation": "A Connected App lives inside Salesforce (Setup → App Manager) and defines the OAuth settings, scopes, and policies an external application must use to connect in — it isn't the external app itself."
+    },
+    {
+      "question": "Which Connected App setting does an external client app use, together with its Consumer Secret, to request an access token?",
+      "options": ["Consumer Key (Client ID)", "The org's Salesforce Id", "A Permission Set Id", "The Named Credential's label"],
+      "correctIndex": 0,
+      "explanation": "The Consumer Key (Client ID) identifies the Connected App to Salesforce's OAuth endpoint; paired with the Consumer Secret (where required by the flow), it's used to request an access token."
     }
   ]
 }

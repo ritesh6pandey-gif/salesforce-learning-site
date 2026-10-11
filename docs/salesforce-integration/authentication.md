@@ -68,6 +68,51 @@ Salesforce validates the token, resolves it to a user, and then enforces that us
 the request touches — authentication tells Salesforce *who* is calling, but it's the
 existing security model that decides *what* they can do.
 
+## Connected Apps: registering an external client
+
+Before an external application can use OAuth 2.0 to call into Salesforce at all, it
+needs to be registered as a **Connected App** — a configuration inside Salesforce
+(Setup → App Manager → New Connected App) that defines how that application is allowed
+to authenticate and what it's allowed to do.
+
+![Diagram explaining what a Connected App in Salesforce is, the OAuth 2.0 flow step by step, and a comparison table between the Connected App configuration and the external client app that uses it](/img/lessons/connected-apps.webp)
+
+It's worth being clear on the two different things in play here, since it's an easy
+mix-up:
+
+| | Connected App (in Salesforce) | The client app (outside Salesforce) |
+|---|---|---|
+| What is it? | A configuration that defines how an external app can authenticate and access Salesforce via OAuth 2.0 | The actual application — web, mobile, desktop, or integration tool — that uses those credentials |
+| Where does it live? | Created inside Salesforce, Setup → App Manager | Built and hosted outside Salesforce (your own app, or a third-party tool) |
+| Key settings | Consumer Key (Client ID), Consumer Secret, OAuth scopes, trusted URLs, IP restrictions, session/token policies | Consumer Key (and Secret, if the flow requires it) used to request an access token |
+| Examples | "ERP Integration", "Partner App" — names you give it in Setup | A custom web portal, a mobile app, an iPaaS tool like MuleSoft, or a third-party product like Tableau |
+
+> Salesforce also has a newer, separate Setup feature literally named **External
+> Client Apps**, which is gradually extending (and in places replacing) what Connected
+> Apps do for some OAuth flows. That's a distinct, more specific thing from the
+> generic "the client app itself" meaning used in the table above — don't confuse the
+> two if you spot "External Client Apps" in Setup.
+
+### The OAuth 2.0 flow, step by step
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Client as Client App
+    participant SF as Salesforce
+    User->>Client: 1. Tries to use the external app
+    Client->>SF: 2. Registered as a Connected App<br/>(Client ID + Secret)
+    SF->>User: 3. Prompts for login + consent
+    User->>SF: Approves access
+    SF->>Client: 4. Issues an access token<br/>(and refresh token)
+    Client->>SF: 5. Calls Salesforce APIs<br/>with the access token
+```
+
+Every OAuth flow — Client Credentials, JWT Bearer, or the interactive
+authorization-code flow a human clicks through — is a variation on these same five
+steps: register the app, get consent (or prove identity some other way), receive a
+token, use the token.
+
 ## Common mistakes
 
 - **Hardcoding tokens or passwords in Apex or Flow.** Use Named/External Credentials
@@ -81,6 +126,12 @@ existing security model that decides *what* they can do.
   integration needs.
 - **Assuming authentication equals authorization.** A valid token only proves identity;
   object and field-level permissions still apply to every record the call touches.
+- **Granting a Connected App every OAuth scope "just in case."** Scope it to exactly
+  what the integration needs — a leaked Consumer Secret for an over-scoped app is a
+  much bigger problem than one scoped to a single, narrow permission.
+- **Leaving IP restrictions and session policies at their default on a Connected App**
+  used for a server-to-server integration. If the integration only ever calls from a
+  known set of servers, restrict it — don't leave the door open to any IP.
 
 ## Learn more on Trailhead
 
